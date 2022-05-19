@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from backend.scion_gardens.models import PlantCollection, Priority, Reminders
+from .models import PlantCollection
+from .models import Reminders
+from .models import Priority
 
 # Register your models here.
 admin.site.register(PlantCollection)
