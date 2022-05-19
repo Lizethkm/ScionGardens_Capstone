@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import PlantCollection
-from .models import Reminders
+from .models import Reminder
 from .models import Priority
 
 
@@ -15,9 +15,9 @@ class PlantCollectionSerializer(serializers.ModelSerializer):
 
 
 
-class RemindersSerializer(serializers.ModelSerializer):
+class ReminderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reminders
+        model = Reminder
         fields =["id", "user", "plant", "reminder"]
 
 

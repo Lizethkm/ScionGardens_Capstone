@@ -13,7 +13,7 @@ class PlantCollection(models.Model):
     maintenance = models.CharField(max_length=300)
 
 
-class Reminders(models.Model):
+class Reminder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plant = models.ForeignKey(PlantCollection, blank=True, null=True, on_delete=models.CASCADE)
     reminder = models.CharField(max_length=300)
@@ -22,5 +22,5 @@ class Reminders(models.Model):
 class Priority(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plant = models.ForeignKey(PlantCollection, blank=True, null=True, on_delete=models.CASCADE)
-    reminder = models.ForeignKey(Reminders, blank=True, null=True, on_delete=models.CASCADE)
+    reminder = models.ForeignKey(Reminder, blank=True, null=True, on_delete=models.CASCADE)
     priority = models.IntegerField(default=0)
