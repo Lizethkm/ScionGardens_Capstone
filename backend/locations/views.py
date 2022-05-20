@@ -15,3 +15,14 @@ def get_all_locations(request):
     locations = Location.objects.all()
     serializer = LocationSerializer(locations, many=True)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def locations_details(request):
+    print('User', f'{request.user.id} {request.user.email}' )
+
+    if request.method == 'GET':
+        locations = Location.objects.filter(user_id=request.user.id)
+        serializer = LocationSerializer(locations, many=True)
+        return Response(serializer.data)
