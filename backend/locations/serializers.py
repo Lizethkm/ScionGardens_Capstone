@@ -6,7 +6,8 @@ from .models import Location
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ["user", "plant", "plant_id", "location"]
+        fields = [ "location", "plant_id"]
+        depth=1 
 
-    plant_id = serializers.IntegerField(write_only=True)
+    # plant_id = serializers.IntegerField(write_only=True)
    
