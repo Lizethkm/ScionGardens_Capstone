@@ -1,0 +1,1032 @@
+{
+	"info": {
+		"_postman_id": "01dc81de-200d-489d-a13d-b29fd78fc33b",
+		"name": "Scion_Gardens_Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mangorocks\",\r\n    \"password\": \"password1@\",\r\n    \"email\": \"mango@devcodecamp.com\",\r\n    \"first_name\": \"Mango\",\r\n    \"last_name\": \"Martinez\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"mangorocks\",\r\n    \"password\": \"password1@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh_Access",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1NDcxNzEwNywiaWF0IjoxNjUyOTg5MTA3LCJqdGkiOiIzN2JlNGQyMmRmMzg0YjI4YTA4MjUxZmY3Y2I5MjY0NyIsInVzZXJfaWQiOjMsInVzZXJuYW1lIjoibWFuZ29yb2NrcyIsImZpcnN0X25hbWUiOiJNYW5nbyJ9.b7dC3mAQhlszK8Uyxau4Bz1Un_BV_-EK_sZgwpXZjjc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cars",
+			"item": [
+				{
+					"name": "Get_All_Cars (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Cars_For_User (protected)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New_Car_For_User (protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"make\": \"Nissan\",\r\n    \"model\": \"Datsun 620\",\r\n    \"year\": 1974\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/cars/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"cars",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scion_Gardens",
+			"item": [
+				{
+					"name": "Get_All_Plants(unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_PlantCollections_For_User (protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_PlantCollection_For_User(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plant\": \" Grape Tomatoes\",\r\n    \"sunlight\": \"8-10 Hours Daily\",\r\n    \"water\": \"1-2 inches Per Week\",\r\n    \"maintenance\": \"Keep Top 1 inch of Soil Moist\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_PlantCollection_By_Id(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_PlantCollection_By_Id(protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plant\": \"Carrots\",\r\n    \"sunlight\": \"10 Hours Direct\",\r\n    \"water\": \"1-2 inches Per Week\",\r\n    \"maintenance\": \"Soil Needs to be Free-Draining\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_PlantCollection_By_Id(protected)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/plantcollection/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"plantcollection",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Locations",
+			"item": [
+				{
+					"name": "Get_All_Locations (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Locations_For_User(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Location_For_User(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": \"Front Porch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Location_By_Id(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Location_By_Id(protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"location\": \"Garden Treasure in Backyard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Location_By_Id(protected)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/locations/5/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reminders",
+			"item": [
+				{
+					"name": "Get_All_Reminders (unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Reminders_For_User(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Reminder_For_User(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminder\": \"Seed Complete Germinating\",\r\n    \"plant_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Reminder_By_Id(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Reminder_By_Id(protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reminder\": \"Transfer Mango Seed to Pot\",\r\n    \"plant_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/4/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								"4",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Reminder_By_Id(protected)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reminders/2/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reminders",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Priorities",
+			"item": [
+				{
+					"name": "Get_All_Priorities(unprotected)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/all/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Priorities_For_User(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create_Priority_For_User(protected)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"priority\": 10,\r\n    \"reminder_id\": 4\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Priority_By_Id(protected)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Priority_By_Id(protected)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"priority\": 2,\r\n    \"reminder_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Priority_By_Id(protected)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjUzODU0OTM0LCJpYXQiOjE2NTI5ODkxMDcsImp0aSI6IjZkOWUwYmI3OGE0YzQ3NTRhMTNiZjlkNGU2ODJlMzgzIiwidXNlcl9pZCI6MywidXNlcm5hbWUiOiJtYW5nb3JvY2tzIiwiZmlyc3RfbmFtZSI6Ik1hbmdvIn0.g5G35VnlVQr_FHKWY2uXPhgaKY1sD9_6s5NT1deeFGE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/priorities/3/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"priorities",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
