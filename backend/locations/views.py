@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.decorators import api_view, permission_classes
 from .models import Location
 from .serializers import LocationSerializer
-from locations import serializers
+
 
 
 # Create your views here.
@@ -31,10 +31,10 @@ def locations_details(request):
 
     if request.method == 'POST':
         serializer = LocationSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save(user=request.user)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
 
 @api_view(['GET','PUT','DELETE'])
 @permission_classes([IsAuthenticated])
