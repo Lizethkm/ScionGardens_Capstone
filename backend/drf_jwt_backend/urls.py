@@ -16,7 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-import priorities
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +24,4 @@ urlpatterns = [
     path('api/plantcollection/', include('scion_gardens.urls')),
     path('api/locations/', include('locations.urls')),
     path('api/reminders/', include('reminders.urls')),
-    path('api/priorities/', include('priorities.urls'))
 ]

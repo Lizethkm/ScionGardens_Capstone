@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'scion_gardens',
     'locations',
     'reminders',
-    'priorities'
 ]
 
 MIDDLEWARE = [
