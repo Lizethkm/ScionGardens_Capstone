@@ -14,6 +14,8 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import CreatePlantCollection from "./components/CreatePlantCollection/CreatePlantCollection";
+
 
 
 function App() {
@@ -32,6 +34,12 @@ function App() {
         <Route path= "/plantcollections" element={
           <PrivateRoute>
             <PlantCollectionPage />
+          </PrivateRoute>
+        }
+        />
+        <Route path= "/addplant" element={
+          <PrivateRoute>
+            <CreatePlantCollection />
           </PrivateRoute>
         }
         />
