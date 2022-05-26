@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth"
 
@@ -19,14 +19,14 @@ const CreatePlantCollection = (props) => {
 
     async function postNewPlantCollection(){
         try {
-            let response = await axios.post("http://127.0.0.1:8000/api/locations/", formData, {
+            let response = await axios.post("http://127.0.0.1:8000/api/plantcollection/", formData, {
                 headers: {
                     Authorization: "Bearer " + token
                 }
             })
             navigate("/plantcollections")
         } catch (error) {
-            console.log(error.message)
+            console.log(error.response.data)
             
         }
     }
@@ -37,21 +37,22 @@ const CreatePlantCollection = (props) => {
         <div className="container">
             <form className="form" onSubmit={handleSubmit}>
                 <label>
-                    Plant:{" "}
+                    Plant:{""}
                     <input type="text" name="plant" value={formData.plant} onChange={handleInputChange} />
                 </label>
                 <label>
-                    Sunlight:{" "}
-                    <input type="text" name="Sunlight" value={formData.sunlight} onChange={handleInputChange} />
+                    Sunlight:{""}
+                    <input type="text" name="sunlight" value={formData.sunlight} onChange={handleInputChange} />
                 </label>
                 <label>
-                    Water:{" "}
+                    Water:{""}
                     <input type="text" name="water" value={formData.water} onChange={handleInputChange} />
                 </label>
                 <label>
-                    Maintenance:{" "}
-                    <input type="text" name="plant" value={formData.maintenance} onChange={handleInputChange} />
+                    Maintenance:{""}
+                    <input type="text" name="maintenance" value={formData.maintenance} onChange={handleInputChange} />
                 </label>
+                <button>Add Plant</button>
             </form>
         </div>
     );
