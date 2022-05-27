@@ -17,19 +17,23 @@ const PlantCollectionPage = (props) => {
     const navigate = useNavigate()
     const [plantCollections, setPlantCollections] = useState([]);
 
+
+
+
+    const fetchPlantCollections = async () => {
+        try {
+            let response = await axios.get("http://127.0.0.1:8000/api/plantcollection/", {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            });
+            setPlantCollections(response.data);
+        } catch (error) {
+            console.log(error.response.data); 
+        }
+    };
+
     useEffect(() => {
-        const fetchPlantCollections = async () => {
-            try {
-                let response = await axios.get("http://127.0.0.1:8000/api/plantcollection/", {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                setPlantCollections(response.data);
-            } catch (error) {
-                console.log(error.response.data); 
-            }
-        };
         fetchPlantCollections();
     }, [token]);
 
@@ -86,6 +90,7 @@ const PlantCollectionPage = (props) => {
             maintenance: editFormData.maintenance,
         }
 
+
         
         let response = axios.put(`http://127.0.0.1:8000/api/plantcollection/${editedPlantCollection.id}/`, editedPlantCollection, {
             headers: {
@@ -93,9 +98,10 @@ const PlantCollectionPage = (props) => {
             }
         })
         
-        setPlantCollections(editedPlantCollection);
+        
         setEditPlantCollectionId(null);
-        setEditFormData(null)
+        setEditFormData(null);
+        fetchPlantCollections()
 
      
     }
