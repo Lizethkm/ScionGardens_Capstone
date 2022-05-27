@@ -29,6 +29,24 @@ const HomePage = () => {
     fetchReminders();
   }, [token]);
 
+  const [locations, setLocations] = useState([]);
+
+  useEffect(() => {
+      const fetchLocations = async () => {
+          try {
+              let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
+                  headers: {
+                      Authorization: "Bearer " + token,
+                  },
+              });
+              setLocations(locations.data);
+          } catch (error) {
+              console.log(error.locations.data);
+          }
+      };
+      fetchLocations();
+  }, [token]);
+
   // useEffect(() => {
   //   const fetchCars = async () => {
   //     try {
@@ -62,6 +80,12 @@ const HomePage = () => {
         <p key={el.id}>
           {el.priority} {el.reminder} {el.expired_date}
         </p>
+      ))}
+      {locations && 
+      locations.map((el) => (
+       <p key={el.id}>
+         {el.location} 
+       </p> 
       ))}
     </div>
   );

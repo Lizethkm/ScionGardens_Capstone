@@ -11,10 +11,12 @@ import PlantCollectionPage from "./pages/PlantCollectionPage/PlantCollectionPage
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
 import Footer from "./components/Footer/Footer";
+import CreatePlantCollection from "./components/CreatePlantCollection/CreatePlantCollection";
+import EditPlantCollections from "./components/EditPlantCollection/EditPlantCollection";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import CreatePlantCollection from "./components/CreatePlantCollection/CreatePlantCollection";
+
 
 
 
@@ -40,6 +42,12 @@ function App() {
         <Route path= "/addplant" element={
           <PrivateRoute>
             <CreatePlantCollection />
+          </PrivateRoute>
+        }
+        />
+        <Route path= "plantcollections/editplant" element={
+          <PrivateRoute>
+            <EditPlantCollections />
           </PrivateRoute>
         }
         />

@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import axios from "axios"
 
 import useAuth from "../../hooks/useAuth"
-import DisplayLocations from "../../components/DisplayLocations/DisplayLocations";
-import CreatePlantCollection from "../../components/CreatePlantCollection/CreatePlantCollection";
+import DisplayPlantCollection from "../../components/DisplayPlantCollection/DisplayPlantCollection";
+import { Fragment } from "react/cjs/react.production.min";
+import EditPlantCollections from "../../components/EditPlantCollection/EditPlantCollection";
+
 
 
 
@@ -31,37 +33,103 @@ const PlantCollectionPage = (props) => {
     }, [token]);
 
 
-    const [locations, setLocations] = useState([]);
 
-    useEffect(() => {
-        const fetchLocations = async () => {
-            try {
-                let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
-                    headers: {
-                        Authorization: "Bearer " + token,
-                    },
-                });
-                setLocations(locations.data);
-            } catch (error) {
-                console.log(error.locations.data);
-            }
-        };
-        fetchLocations();
-    }, [token]);
+
+    const [editPlantCollectionId, setEditPlantCollectionId] = useState(null);
+
+    const handleEditClick = (event, plantCollection) => {
+        event.preventDefault();
+        setEditPlantCollectionId(plantCollection.id);
+
+        const formValues = {
+            plant: plantCollection.plant,
+            sunlight: plantCollection.sunlight,
+            water: plantCollection.water,
+            maintenance: plantCollection.maintenance,
+        }
+
+        setEditFormData(formValues);
+    }
+
+    const [editFormData, setEditFormData] = useState({
+            plant: "",
+            sunlight: "",
+            water: "",
+            maintenance: "",
+        })
+
+    const handleEditFormChange = (event) =>{
+        
+        event.preventDefault();
+
+        const fieldName = event.target.getAttribute("plant");
+        const fieldValue= event.target.value;
+
+        const newFormData = {...editFormData};
+        newFormData[fieldName] = fieldValue;
+
+        setEditFormData(newFormData);
+
+    }; 
+
+    const handleEditFormSubmit = (event) => {
+        event.preventDefault();
+
+        const editedPlantCollection = {
+            id: editPlantCollectionId,
+            plant: editFormData.plant,
+            sunlight: editFormData.sunlight,
+            water: editFormData.water,
+            maintenance: editFormData.maintenance,
+        }
+
+        const newPlantCollections = [...plantCollections];
+
+        const index = plantCollections.findIndex((plantCollection) => plantCollection.id === editPlantCollectionId)
+
+        newPlantCollections[index]= editedPlantCollection;
+
+        setPlantCollections(newPlantCollections);
+        setEditPlantCollectionId(null);
+        setEditFormData(null)
+    }
 
 
     return ( 
-        <div>
+        
+            
+        <form onSubmit={handleEditFormSubmit}>
             <h1> Your Plant Collections!</h1>
-            {/* {plantCollections &&
-                plantCollections.map((el) =>(
-                    <p key={el.id}>
-                        {el.plant} {el.sunlight} {el.water} {el.maintenance}
-                    </p>
-            ))} */}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plant</th>
+                        <th>Sunlight</th>
+                        <th>Water</th>
+                        <th>Maintenance</th>
+                        <th>Edit</th>
+                        
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {plantCollections.map((plantCollection) =>(
+                    <Fragment>
+                        {editPlantCollectionId === plantCollection.id ? (
+                            <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                        ) : (
+                            <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick}/>
+                        )}
+                    </Fragment>
+                    ))}
+                </tbody>
+            </table>
             <Link to="/addplant"> Add Plant</Link>
-            <DisplayLocations plantCollections = {plantCollections} locations = {locations} />
-        </div>
+        </form>
+
+
+            
+            
      );
 }
  
