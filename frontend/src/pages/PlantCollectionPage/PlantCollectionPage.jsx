@@ -1,6 +1,6 @@
 import React from "react"
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios"
 
@@ -14,6 +14,7 @@ import EditPlantCollections from "../../components/EditPlantCollection/EditPlant
 
 const PlantCollectionPage = (props) => {
     const [user, token] = useAuth()
+    const navigate = useNavigate()
     const [plantCollections, setPlantCollections] = useState([]);
 
     useEffect(() => {
@@ -38,6 +39,7 @@ const PlantCollectionPage = (props) => {
     const [editPlantCollectionId, setEditPlantCollectionId] = useState(null);
 
     const handleEditClick = (event, plantCollection) => {
+    
         event.preventDefault();
         setEditPlantCollectionId(plantCollection.id);
 
@@ -59,10 +61,10 @@ const PlantCollectionPage = (props) => {
         })
 
     const handleEditFormChange = (event) =>{
-        
+
         event.preventDefault();
 
-        const fieldName = event.target.getAttribute("plant");
+        const fieldName = event.target.getAttribute("name");
         const fieldValue= event.target.value;
 
         const newFormData = {...editFormData};
@@ -73,6 +75,7 @@ const PlantCollectionPage = (props) => {
     }; 
 
     const handleEditFormSubmit = (event) => {
+
         event.preventDefault();
 
         const editedPlantCollection = {
@@ -83,22 +86,28 @@ const PlantCollectionPage = (props) => {
             maintenance: editFormData.maintenance,
         }
 
-        const newPlantCollections = [...plantCollections];
-
-        const index = plantCollections.findIndex((plantCollection) => plantCollection.id === editPlantCollectionId)
-
-        newPlantCollections[index]= editedPlantCollection;
-
-        setPlantCollections(newPlantCollections);
+        
+        let response = axios.put(`http://127.0.0.1:8000/api/plantcollection/${editedPlantCollection.id}/`, editedPlantCollection, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+        
+        setPlantCollections(editedPlantCollection);
         setEditPlantCollectionId(null);
         setEditFormData(null)
+
+     
     }
+
+
+
 
 
     return ( 
         
             
-        <form onSubmit={handleEditFormSubmit}>
+        <form onSubmit={handleEditFormSubmit} >
             <h1> Your Plant Collections!</h1>
             <table>
                 <thead>

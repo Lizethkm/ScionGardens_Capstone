@@ -17,7 +17,7 @@ const DisplayPlantCollection = ({plantCollection, handleEditClick}, props) => {
             <td>
                 <button type ="button" onClick={(event) => handleEditClick(event, plantCollection)}>Edit</button>
             </td>
-            {/* <td><button className="btn btn-success btn-sm" onClick={(event) => handleEditClick(event, props.plantCollections)}> <Link to="editplant/" >Edit</Link></button></td> */}
+            
 
         </tr>
 

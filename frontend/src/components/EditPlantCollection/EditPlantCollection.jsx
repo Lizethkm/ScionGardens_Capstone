@@ -1,32 +1,4 @@
-import axios from "axios";
-import useAuth from "../../hooks/useAuth";
-import useCustomForm from "../../hooks/useCustomForm";
-import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
-
-
-
-
-const EditPlantCollections = ({editFormData, handleEditFormChange}) => {
-
-    // const navigate = useNavigate()
-    // const [user, token] = useAuth()
-
-    // async function editPlantCollection(plantclollectionPk){
-    //     debugger
-    //     try {
-    //         let response = await axios.put(`http://127.0.0.1:8000/api/plantcollection/${plantclollectionPk}/`, {
-    //             headers: {
-    //                 Authorization: "Bearer " + token
-    //             }
-    //         })
-    //         navigate("/plantcollections")
-    //     } catch (error) {
-    //         console.log(error.response.data)
-            
-    //     }
-    // }
-    
+const EditPlantCollections = ( {editFormData, handleEditFormChange}, props) => {
 
 
     return ( 
