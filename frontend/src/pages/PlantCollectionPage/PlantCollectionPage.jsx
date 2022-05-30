@@ -106,6 +106,19 @@ const PlantCollectionPage = (props) => {
      
     }
 
+    const handleDeleteClick = (plantCollection) => {
+        
+
+        let response = axios.delete(`http://127.0.0.1:8000/api/plantcollection/${plantCollection.id}/`, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+
+        fetchPlantCollections();
+
+    };
+
 
 
 
@@ -133,7 +146,7 @@ const PlantCollectionPage = (props) => {
                         {editPlantCollectionId === plantCollection.id ? (
                             <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
                         ) : (
-                            <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick}/>
+                            <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick} handleDeleteClick= {handleDeleteClick} />
                         )}
                     </Fragment>
                     ))}

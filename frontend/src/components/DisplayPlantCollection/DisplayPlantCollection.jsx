@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 
-const DisplayPlantCollection = ({plantCollection, handleEditClick}, props) => {
+const DisplayPlantCollection = ({plantCollection, handleEditClick, handleDeleteClick}, props) => {
 
 
 
@@ -16,7 +16,9 @@ const DisplayPlantCollection = ({plantCollection, handleEditClick}, props) => {
             <td>{plantCollection.maintenance}</td>
             <td>
                 <button type ="button" onClick={(event) => handleEditClick(event, plantCollection)}>Edit</button>
+                <button type="button" onClick={(event) => handleDeleteClick(plantCollection.id)}>Delete</button>
             </td>
+
             
 
         </tr>
