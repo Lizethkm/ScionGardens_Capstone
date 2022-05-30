@@ -10,3 +10,4 @@ class Location(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     plant = models.ForeignKey(PlantCollection, blank=True, null=True, on_delete=models.CASCADE)
     location = models.CharField(max_length=250)
+

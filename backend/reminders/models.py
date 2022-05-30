@@ -15,5 +15,7 @@ class Reminder(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     expired_date = models.DateTimeField()
 
+    
+
 
  
