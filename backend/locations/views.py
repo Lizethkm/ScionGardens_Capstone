@@ -22,7 +22,6 @@ def get_all_locations(request):
 @api_view(['GET', 'POST'])
 @permission_classes([IsAuthenticated])
 def locations_details(request):
-    print('User', f'{request.user.id} {request.user.email}' )
 
     if request.method == 'GET':
         locations = Location.objects.filter(user_id=request.user.id)
