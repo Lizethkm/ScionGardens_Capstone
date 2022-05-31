@@ -34,8 +34,10 @@ const ReminderPage = (props) => {
 
     const [editReminderId, setEditReminderId] = useState(null);
     const [editFormData, setEditFormData] = useState({
+        priority: "",
         plant: "",
-        reminder: ""
+        reminder: "",
+        expired_date: "",
     })
 
     const handleEditClick = (event, reminder) => {
@@ -43,8 +45,10 @@ const ReminderPage = (props) => {
         setEditReminderId(reminder.id); 
 
         const formValues = {
+            priority: reminder.priority,
             plant: reminder.plant,
-            Reminder: reminder.reminder,
+            reminder: reminder.reminder,
+            expired_date: reminder.expired_date,
         }
 
         setEditFormData(formValues)
@@ -67,8 +71,10 @@ const ReminderPage = (props) => {
 
         const editedReminder = {
             id: editReminderId,
+            priority: editFormData.priority,
             plant: editFormData.plant,
-            Reminder: editFormData.reminder
+            reminder: editFormData.reminder,
+            expired_date: editFormData.expired_date,
         }
 
         let response = axios.put(`http://127.0.0.1:8000/api/reminders/${editedReminder.id}/`, editedReminder, {
@@ -85,13 +91,13 @@ const ReminderPage = (props) => {
     const handleDeleteClick = (reminder) =>{
 
         
-        let response = axios.delete(`http://127.0.0.1:8000/api/reminder/${reminder}/`, {
+        let response = axios.delete(`http://127.0.0.1:8000/api/reminders/${reminder}/`, {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
 
-
+        debugger
         fetchReminders();
         alert("Delete Successful")
     }
@@ -106,8 +112,10 @@ const ReminderPage = (props) => {
             <table>
                 <thead>
                     <tr>
+                        <th>Priority</th>
                         <th>Plant</th>
                         <th>Reminder</th>
+                        <th>Expiration Date</th>
                         <th>Actions</th>
                         
                     </tr>

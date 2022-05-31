@@ -22,6 +22,7 @@ import EditLocations from "./components/EditLocations/EditLocations";
 import PrivateRoute from "./utils/PrivateRoute";
 import ReminderPage from "./pages/RemindersPage/RemindersPage";
 import EditReminders from "./components/EditReminders/EditReminders";
+import CreateReminders from "./components/CreateReminders/CreateReminders";
 
 
 
@@ -83,12 +84,12 @@ function App() {
           </PrivateRoute>
         }
         />
-        {/* <Route path= "reminders/addreminder" element={
+        <Route path= "/addreminder" element={
           <PrivateRoute>
-            <EditLocations />
+            < CreateReminders />
           </PrivateRoute>
         }
-        /> */}
+        />
         <Route path= "reminders/editreminders" element={
           <PrivateRoute>
             <EditReminders />
