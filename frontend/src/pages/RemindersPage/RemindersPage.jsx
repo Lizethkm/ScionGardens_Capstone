@@ -5,49 +5,46 @@ import { Fragment } from "react/cjs/react.production.min";
 import axios from "axios"
 
 import useAuth from "../../hooks/useAuth"
-import DisplayLocations from "../../components/DisplayLocations/DisplayLocations";
-import EditLocations from "../../components/EditLocations/EditLocations";
+import DisplayReminders from "../../components/DisplayReminders/DisplayReminders";
+import EditReminders from "../../components/EditReminders/EditReminders";
 
 
-
-
-
-const LocationsPage = (props) => {
+const ReminderPage = (props) => {
 
     const [user, token] = useAuth()
-    const [locations, setLocations] = useState([]);
+    const [reminders, setReminders] = useState([]);
 
 
-    const fetchLocations = async () => {
+    const fetchReminders = async () => {
         try {
-            let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
+            let reminder = await axios.get("http://127.0.0.1:8000/api/reminders/", {
                 headers: {
                     Authorization: "Bearer " + token,
                 },
             });
-            setLocations(locations.data);
+            setReminders(reminder.data);
         } catch (error) {
-            console.log(error.locations.data);
+            console.log(error.reminder.data);
         }
     };
 
     useEffect(() => {
-        fetchLocations();
+        fetchReminders();
     }, [token]);
 
-    const [editLocationId, setEditLocationId] = useState(null);
+    const [editReminderId, setEditReminderId] = useState(null);
     const [editFormData, setEditFormData] = useState({
         plant: "",
-        location: ""
+        reminder: ""
     })
 
-    const handleEditClick = (event, location) => {
+    const handleEditClick = (event, reminder) => {
         event.preventDefault();
-        setEditLocationId(location.id); 
+        setEditReminderId(reminder.id); 
 
         const formValues = {
-            plant: location.plant,
-            location: location.location,
+            plant: reminder.plant,
+            Reminder: reminder.reminder,
         }
 
         setEditFormData(formValues)
@@ -68,34 +65,34 @@ const LocationsPage = (props) => {
     const handleEditFormSubmit = (event) => {
         event.preventDefault();
 
-        const editedLocation = {
-            id: editLocationId,
+        const editedReminder = {
+            id: editReminderId,
             plant: editFormData.plant,
-            location: editFormData.location
+            Reminder: editFormData.reminder
         }
 
-        let response = axios.put(`http://127.0.0.1:8000/api/locations/${editedLocation.id}/`, editedLocation, {
+        let response = axios.put(`http://127.0.0.1:8000/api/reminders/${editedReminder.id}/`, editedReminder, {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
 
-        setEditLocationId(null);
+        setEditReminderId(null);
         setEditFormData(null);
-        fetchLocations(); 
+        fetchReminders(); 
     };
 
-    const handleDeleteClick = (location) =>{
+    const handleDeleteClick = (reminder) =>{
 
         
-        let response = axios.delete(`http://127.0.0.1:8000/api/locations/${location}/`, {
+        let response = axios.delete(`http://127.0.0.1:8000/api/reminder/${reminder}/`, {
             headers: {
                 Authorization: "Bearer " + token
             }
         })
 
 
-        fetchLocations();
+        fetchReminders();
         alert("Delete Successful")
     }
 
@@ -104,35 +101,35 @@ const LocationsPage = (props) => {
 
     return ( 
         <div>
-        <h1>Your Locations!</h1>
+        <h1>Your reminder!</h1>
         <form onSubmit={handleEditFormSubmit}>
             <table>
                 <thead>
                     <tr>
                         <th>Plant</th>
-                        <th>Location</th>
+                        <th>Reminder</th>
                         <th>Actions</th>
                         
                     </tr>
 
                 </thead>
                 <tbody>
-                    {locations.map((location) =>(
+                    {reminders.map((reminder) =>(
                     <Fragment>
-                        {editLocationId === location.id ? (
-                            < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                        {editReminderId === reminder.id ? (
+                            < EditReminders editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
                         ) : (
-                            < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
+                            < DisplayReminders reminder = {reminder} reminders = {reminders} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
                         )}               
                     </Fragment>                      
                     ))}
                 </tbody>
             </table>
         </form>
-        <Link to="/addlocation"> Add Location</Link>
+        <Link to="/addReminder"> Add Reminder</Link>
         
     </div>
     );
 }
  
-export default LocationsPage;
+export default ReminderPage;
