@@ -85,6 +85,18 @@ const LocationsPage = (props) => {
         fetchLocations(); 
     };
 
+    const handleDeleteClick = (location) =>{
+
+        
+        let response = axios.delete(`http://127.0.0.1:8000/api/locations/${location}/`, {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        })
+
+        fetchLocations();
+    }
+
 
 
 
@@ -108,7 +120,7 @@ const LocationsPage = (props) => {
                     {editLocationId === location.id ? (
                         < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
                     ) : (
-                        < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} />
+                        < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
                     )}               
                 </Fragment>                      
                 ))}

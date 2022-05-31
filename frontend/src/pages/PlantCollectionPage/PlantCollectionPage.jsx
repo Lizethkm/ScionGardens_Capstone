@@ -103,10 +103,10 @@ const PlantCollectionPage = (props) => {
         
         setEditPlantCollectionId(null);
         setEditFormData(null);
-        fetchPlantCollections()
+        fetchPlantCollections();
 
      
-    };
+    }
 
     const handleDeleteClick = (plantCollection) => {
         
@@ -114,12 +114,12 @@ const PlantCollectionPage = (props) => {
         let response = axios.delete(`http://127.0.0.1:8000/api/plantcollection/${plantCollection}/`, {
             headers: {
                 Authorization: "Bearer " + token
-            },
+            }
         })
 
-        fetchPlantCollections()
+        fetchPlantCollections();
 
-    };
+    }
 
 
 

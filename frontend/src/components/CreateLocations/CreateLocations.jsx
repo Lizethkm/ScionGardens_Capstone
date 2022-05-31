@@ -23,7 +23,7 @@ const CreateLocation = (props) => {
                    Authorization: "Bearer " + token
                }
            })
-           navigate("/")
+           navigate("/locations")
        } catch (error) {
            console.log(error.response.data)
        }

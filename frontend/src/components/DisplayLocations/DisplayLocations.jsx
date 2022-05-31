@@ -3,7 +3,7 @@
 
 
 
-const DisplayLocations = ({location, handleEditClick}, props) => {
+const DisplayLocations = ({location, handleEditClick, handleDeleteClick}, props) => {
     return ( 
 
         <tr>
@@ -11,12 +11,8 @@ const DisplayLocations = ({location, handleEditClick}, props) => {
             <td>{location.location}</td>
             <td>
                 <button type ="button" onClick={(event) => handleEditClick(event, location)} >Edit</button>
-                <button type="button" >Delete</button>
+                <button type="button" onClick={(event) => handleDeleteClick(location.id)} >Delete</button>
             </td>
-
-{/* for delete button onClick={(event) => handleDeleteClick(location.id)} */}
-        
-
     </tr>
 
     
