@@ -137,7 +137,7 @@ const PlantCollectionPage = (props) => {
                         <th>Sunlight</th>
                         <th>Water</th>
                         <th>Maintenance</th>
-                        <th>Edit</th>
+                        <th>Actions</th>
                         
                     </tr>
 

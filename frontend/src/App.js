@@ -15,9 +15,12 @@ import Footer from "./components/Footer/Footer";
 import CreatePlantCollection from "./components/CreatePlantCollection/CreatePlantCollection";
 import EditPlantCollections from "./components/EditPlantCollection/EditPlantCollection";
 
+import CreateLocation from "./components/CreateLocations/CreateLocations";
+import EditLocations from "./components/EditLocations/EditLocations";
+
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import CreateLocation from "./components/CreateLocations/CreateLocations";
+
 
 
 
@@ -63,6 +66,12 @@ function App() {
         <Route path= "/addlocation" element={
           <PrivateRoute>
             <CreateLocation />
+          </PrivateRoute>
+        }
+        />
+        <Route path= "locations/editlocation" element={
+          <PrivateRoute>
+            <EditLocations />
           </PrivateRoute>
         }
         />
