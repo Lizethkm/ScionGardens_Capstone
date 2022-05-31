@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
+import CreateLocation from "../../components/CreateLocations/CreateLocations";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -29,23 +31,8 @@ const HomePage = () => {
     fetchReminders();
   }, [token]);
 
-  const [locations, setLocations] = useState([]);
 
-  useEffect(() => {
-      const fetchLocations = async () => {
-          try {
-              let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
-                  headers: {
-                      Authorization: "Bearer " + token,
-                  },
-              });
-              setLocations(locations.data);
-          } catch (error) {
-              console.log(error.locations.data);
-          }
-      };
-      fetchLocations();
-  }, [token]);
+
 
   // useEffect(() => {
   //   const fetchCars = async () => {
@@ -78,15 +65,12 @@ const HomePage = () => {
       {reminders && 
       reminders.map((el) => (
         <p key={el.id}>
-          {el.priority} {el.reminder} {el.expired_date}
+          {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
         </p>
       ))}
-      {locations && 
-      locations.map((el) => (
-       <p key={el.id}>
-         {el.location} 
-       </p> 
-      ))}
+
+
+    < Link to="addlocation/"> Add Location</Link>
     </div>
   );
 };

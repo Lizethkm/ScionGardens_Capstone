@@ -18,6 +18,9 @@ const Navbar = () => {
         <li className="plantCollections">
           <Link to="/plantcollections" style={{textDecoration: "none", color: "white"}}>Plant Collections</Link>
         </li>
+        <li className="locations">
+          <Link to="/locations" style={{textDecoration: "none", color: "white"}}>Locations</Link>
+        </li>
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PlantCollectionPage from "./pages/PlantCollectionPage/PlantCollectionPage";
+import LocationsPage from "./pages/LocationsPage/LocationsPage";
 
 // Component Imports
 import Navbar from "./components/NavBar/NavBar";
@@ -16,6 +17,8 @@ import EditPlantCollections from "./components/EditPlantCollection/EditPlantColl
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
+import CreateLocation from "./components/CreateLocations/CreateLocations";
+
 
 
 
@@ -48,6 +51,18 @@ function App() {
         <Route path= "plantcollections/editplant" element={
           <PrivateRoute>
             <EditPlantCollections />
+          </PrivateRoute>
+        }
+        />
+        <Route path= "/locations" element={
+          <PrivateRoute>
+            <LocationsPage />
+          </PrivateRoute>
+        }
+        />
+        <Route path= "/addlocation" element={
+          <PrivateRoute>
+            <CreateLocation />
           </PrivateRoute>
         }
         />
