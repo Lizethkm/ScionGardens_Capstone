@@ -1,7 +1,11 @@
 ul {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
   list-style-type: none;
+}
+
+h3{
+  justify-content: left;
 }
 
 li {
@@ -9,8 +13,8 @@ li {
 }
 
 .navBar {
-  background: steelblue;
-  box-shadow: 4px 2px 5px gray;
+  /* background: steelblue; */
+  /* box-shadow: 4px 2px 5px gray; */
   color: white;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
@@ -32,4 +36,6 @@ li {
 .brand {
   cursor: pointer;
   font-size: 2rem;
+  font-family: "Harlow" Solid;
+  border: red;
 }

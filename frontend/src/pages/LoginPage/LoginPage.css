@@ -1,3 +1,21 @@
 .error {
   color: red;
 }
+
+body{
+  background-image: url(../../assests/gardenBackground.jpg);
+  background-size: cover;
+
+}
+
+.loginForm {
+  outline: rgba(247, 251, 247, 0.624) solid 10px;
+  background-color: rgba(247, 251, 247, 0.624);
+}
+
+
+.loginButton{
+  color: green;
+  outline-color: green;
+  background-color: rgb(208, 223, 208);
+}

@@ -11,62 +11,74 @@ const HomePage = () => {
   //TODO: Add an AddCars Page to add a car for a logged in user's garage
   const [user, token] = useAuth();
   const [reminders, setReminders] = useState([]);
-  // const [cars, setCars] = useState([]);
+
+  
+
+  const fetchReminders = async () => {
+    try {
+      let response = await axios.get("http://127.0.0.1:8000/api/reminders/", {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      });
+      setReminders(response.data);
+      console.log(response.data)
+    } catch (error) {
+      console.log(error.response.data); 
+    }
+  };
+
   
 
   useEffect(() => {
-    const fetchReminders = async () => {
-      try {
-        let response = await axios.get("http://127.0.0.1:8000/api/reminders/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        });
-        setReminders(response.data);
-      } catch (error) {
-        console.log(error.response.data); 
-      }
-    };
+
     fetchReminders();
   }, [token]);
 
 
 
+  // function compareDates(reminders){
 
-  // useEffect(() => {
-  //   const fetchCars = async () => {
-  //     try {
-  //       let response = await axios.get("http://127.0.0.1:8000/api/cars/", {
-  //         headers: {
-  //           Authorization: "Bearer " + token,
-  //         },
-  //       });
-  //       setCars(response.data);
-  //     } catch (error) {
-  //       console.log(error.response.data);
+  //   const today = new Date();
+  //   const currentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
+  //   console.log("Current Date:", currentDate)
+
+
+  //   debugger
+  //   const expiredReminders = reminders.filter((el) => {
+  //     if (el.expired_date.getFullYear() < currentDate.getFullYear && el.expired_date.getMonth() < currentDate.getMonth() && el.expired_date.getDate() < currentDate.getDate()){
+  //       return true
   //     }
-  //   };
-  //   fetchCars();
-  // }, [token]);
+      
+  //   })
+  //   console.log("Expired Reminders", expiredReminders)
+  //   setReminders(expiredReminders)
+
+    
+  // }
+
+  
+  // compareDates();
+
+
 
 
 
   return (
     <div className="container">
+
       <h1>Home Page for {user.username}!</h1>
-      {/* {cars &&
-        cars.map((car) => (
-          <p key={car.id}>
-            {car.year} {car.model} {car.make}
-          </p>
-        ))} */}
+
       <h4>Reminders</h4>
+
       {reminders && 
       reminders.map((el) => (
         <p key={el.id}>
-          {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
+          {el.priority} {el.reminder} {el.expired_date} {el.plant_name} {console.log(el.expired_date)}
         </p>
+        
       ))}
+  
     </div>
   );
 };

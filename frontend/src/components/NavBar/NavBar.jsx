@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import "./NavBar.css";
+import logo from "../../assests/logo.png"
+
 
 const Navbar = () => {
   const { logoutUser, user } = useContext(AuthContext);
@@ -11,8 +13,9 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <b>Scion Gardens</b>
+          <Link to="/" style={{ textDecoration: "none", color: "gold" }}>
+            <h3>Scion Gardens</h3>
+            <img src={logo} alt="Logo Image" style={{width: 200, height: 200}}></img>
           </Link>
         </li>
         <li className="plantCollections">

@@ -21,6 +21,7 @@ const LoginPage = () => {
   return (
     <div className="container">
       <form className="form" onSubmit={handleSubmit}>
+        <div className="loginForm">
         <label>
           Username:{" "}
           <input
@@ -41,9 +42,10 @@ const LoginPage = () => {
         </label>
         {isServerError ? (
           <p className="error">Login failed, incorrect credentials!</p>
-        ) : null}
-        <Link to="/register">Click to register!</Link>
-        <button>Login!</button>
+        ) : null} 
+          <Link to="/register">Click to register!</Link>         
+        </div>
+        <button className="loginButton">Login!</button>
       </form>
     </div>
   );
