@@ -1,21 +1,18 @@
 from django.db import models
+from django.forms import DateTimeField
 from pytz import timezone
 from authentication.models import User
 from scion_gardens.models import PlantCollection
+# from drf_jwt_backend.settings import DATETIME_FORMAT
 
 # Create your models here.
 
 
 class Reminder(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    plant = models.ForeignKey(PlantCollection, blank=True, null=True, on_delete=models.CASCADE)
+    plant_plant = models.ForeignKey(PlantCollection, related_name="plant_plant", blank=True, null=True, on_delete=models.CASCADE)
     priority = models.IntegerField(default=0)
     reminder = models.CharField(max_length=500)
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-    expired_date = models.DateTimeField()
-
-    
-
-
- 
+    created_date = models.DateField(auto_now_add=True)
+    updated_date = models.DateField(auto_now=True)
+    expired_date = models.DateField()

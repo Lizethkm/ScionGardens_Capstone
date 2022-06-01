@@ -8,6 +8,6 @@ from scion_gardens.models import PlantCollection
 
 class Location(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    plant = models.ForeignKey(PlantCollection, blank=True, null=True, on_delete=models.CASCADE)
+    plant_name = models.ForeignKey(PlantCollection, related_name="plant_name", blank=True, null=True, on_delete=models.CASCADE)
     location = models.CharField(max_length=250)
 
