@@ -72,9 +72,13 @@ const HomePage = () => {
       <h4>Reminders</h4>
 
       {reminders && 
-      reminders.map((el) => (
+      reminders.filter((el) =>{
+        if(el.expired_date < el.updated_date){
+          return true
+        }
+      }).map((el) => (
         <p key={el.id}>
-          {el.priority} {el.reminder} {el.expired_date} {el.plant_name} {console.log(el.expired_date)}
+          {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
         </p>
         
       ))}

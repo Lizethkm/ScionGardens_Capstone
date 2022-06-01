@@ -8,9 +8,12 @@ body{
 
 }
 
-.loginForm {
+.loginPage {
   outline: rgba(247, 251, 247, 0.624) solid 10px;
   background-color: rgba(247, 251, 247, 0.624);
+  background-size: 50%;
+  width: 50%;
+  
 }
 
 
