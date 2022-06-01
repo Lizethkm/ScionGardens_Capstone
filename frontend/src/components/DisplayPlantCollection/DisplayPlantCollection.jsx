@@ -9,8 +9,8 @@ const DisplayPlantCollection = ({plantCollection, handleEditClick, handleDeleteC
     return ( 
 
 
-        <tr>
-            <th scope="row"></th>
+        <tr scope="row">
+            
             <td>{plantCollection.plant}</td>
             <td>{plantCollection.sunlight}</td>
             <td>{plantCollection.water}</td>

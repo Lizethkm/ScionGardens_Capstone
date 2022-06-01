@@ -8,6 +8,9 @@ import useAuth from "../../hooks/useAuth"
 import DisplayPlantCollection from "../../components/DisplayPlantCollection/DisplayPlantCollection";
 import { Fragment } from "react/cjs/react.production.min";
 import EditPlantCollections from "../../components/EditPlantCollection/EditPlantCollection";
+import "./PlantCollectionPage.css"
+import Navbar from "../../components/NavBar/NavBar";
+
 
 
 
@@ -127,35 +130,41 @@ const PlantCollectionPage = (props) => {
 
     return ( 
         
-            
-        <form onSubmit={handleEditFormSubmit} >
-            <h1> Your Plant Collections!</h1>
-            <table className="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Plant</th>
-                        <th scope="col">Sunlight</th>
-                        <th scope="col">Water</th>
-                        <th scope="col">Maintenance</th>
-                        <th scope="col">Actions</th>
-                        
-                    </tr>
+        
+        <div className="plantPage">
+            < Navbar />
+                <form onSubmit={handleEditFormSubmit} >
+                <h1 className="plantGreeting"> {user.username} Plant Collections!</h1>
+                <table className="table table -sm table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Plant</th>
+                            <th scope="col">Sunlight</th>
+                            <th scope="col">Water</th>
+                            <th scope="col">Maintenance</th>
+                            <th scope="col">Actions</th>
+                            
+                        </tr>
 
-                </thead>
-                <tbody>
-                    {plantCollections.map((plantCollection) =>(
-                    <Fragment>
-                        {editPlantCollectionId === plantCollection.id ? (
-                            <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
-                        ) : (
-                            <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick} handleDeleteClick= {handleDeleteClick} />
-                        )}
-                    </Fragment>
-                    ))}
-                </tbody>
-            </table>
-            <Link to="/addplant"> Add Plant</Link>
-        </form>
+                    </thead>
+                    <tbody>
+                        {plantCollections.map((plantCollection) =>(
+                        <Fragment>
+                            {editPlantCollectionId === plantCollection.id ? (
+                                <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                            ) : (
+                                <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick} handleDeleteClick= {handleDeleteClick} />
+                            )}
+                        </Fragment>
+                        ))}
+                    </tbody>
+                </table>
+                <button className="addPlantButton">
+                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"> Add Plant</Link>
+                </button>
+            </form>        
+        </div>   
+
 
 
             

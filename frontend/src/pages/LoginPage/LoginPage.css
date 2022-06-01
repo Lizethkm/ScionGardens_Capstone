@@ -6,14 +6,13 @@ body{
   background-image: url(../../assests/gardenBackground.jpg);
   background-size: cover;
   background-position:  1px -220px;
-
 }
 
 .loginPage {
+
   outline: rgba(247, 251, 247, 0.624) solid 10px;
   background-color: rgba(247, 251, 247, 0.624);
-  background-size: 50%;
-  width: 50%;
+  align-items: center;
   
 }
 
