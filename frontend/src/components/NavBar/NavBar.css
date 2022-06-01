@@ -39,3 +39,8 @@ li {
   font-family: "Harlow" Solid;
   border: red;
 }
+
+.logo{
+  width: 90px;
+  height: auto;
+}

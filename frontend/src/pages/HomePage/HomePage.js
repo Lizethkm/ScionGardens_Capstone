@@ -4,6 +4,8 @@ import useAuth from "../../hooks/useAuth";
 
 import axios from "axios";
 
+import "./HomePage.css"
+
 
 const HomePage = () => {
   // The "user" value from this Hook contains the decoded logged in user information (username, first name, id)
@@ -65,25 +67,28 @@ const HomePage = () => {
 
 
   return (
-    <div className="container">
+    <div className="homePage">
+      <div className="container">
 
-      <h1>Home Page for {user.username}!</h1>
+        <h1 className="homeGreeting">Welcome {user.username}!</h1>
 
-      <h4>Reminders</h4>
+        <h3> Expired Reminders</h3>
 
-      {reminders && 
-      reminders.filter((el) =>{
-        if(el.expired_date < el.updated_date){
-          return true
-        }
-      }).map((el) => (
-        <p key={el.id}>
-          {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
-        </p>
-        
-      ))}
-  
+        {reminders && 
+        reminders.filter((el) =>{
+          if(el.expired_date < el.updated_date){
+            return true
+          }
+        }).map((el) => (
+          <p key={el.id}>
+            {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
+          </p>
+          
+        ))}
+    
+      </div>      
     </div>
+
   );
 };
 

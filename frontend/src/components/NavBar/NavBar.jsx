@@ -13,9 +13,9 @@ const Navbar = () => {
     <div className="navBar">
       <ul>
         <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "gold" }}>
+          <Link to="/" style={{ textDecoration: "none", color: "#FFAE00 "}}>
             <h3>Scion Gardens</h3>
-            <img src={logo} alt="Logo Image" style={{width: 200, height: 200}}></img>
+            <img className="logo" src={logo} alt="Logo Image" />
           </Link>
         </li>
         <li className="plantCollections">

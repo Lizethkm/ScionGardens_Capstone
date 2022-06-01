@@ -130,14 +130,14 @@ const PlantCollectionPage = (props) => {
             
         <form onSubmit={handleEditFormSubmit} >
             <h1> Your Plant Collections!</h1>
-            <table>
+            <table className="table table-dark">
                 <thead>
                     <tr>
-                        <th>Plant</th>
-                        <th>Sunlight</th>
-                        <th>Water</th>
-                        <th>Maintenance</th>
-                        <th>Actions</th>
+                        <th scope="col">Plant</th>
+                        <th scope="col">Sunlight</th>
+                        <th scope="col">Water</th>
+                        <th scope="col">Maintenance</th>
+                        <th scope="col">Actions</th>
                         
                     </tr>
 

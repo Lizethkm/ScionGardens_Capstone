@@ -10,6 +10,7 @@ const DisplayPlantCollection = ({plantCollection, handleEditClick, handleDeleteC
 
 
         <tr>
+            <th scope="row"></th>
             <td>{plantCollection.plant}</td>
             <td>{plantCollection.sunlight}</td>
             <td>{plantCollection.water}</td>
