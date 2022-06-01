@@ -1,46 +1,48 @@
 ul {
   display: flex;
-  justify-content:space-around;
+  justify-content:space-evenly;
   list-style-type: none;
 }
 
-h3{
+/* h3{
   justify-content: left;
-}
+} */
 
 li {
   font-size: 1.25rem;
 }
 
 .navBar {
-  /* background: steelblue; */
+  background: #212529ba;
   /* box-shadow: 4px 2px 5px gray; */
-  color: white;
+  color: #FFAE00;
   margin-bottom: 2rem;
   padding: 1.5rem 2rem;
 }
 
+
+
 .navBar button {
   background: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid green;
+  color: #FFAE00;
   padding: 0.4rem 0.5rem;
 }
 
 .navBar button:hover {
-  background: white;
-  color: steelblue;
+  background: green;
+  color: #FFAE00;
   cursor: pointer;
 }
 
-.brand {
+/* .brand {
   cursor: pointer;
   font-size: 2rem;
   font-family: "Harlow" Solid;
   border: red;
-}
+} */
 
 .logo{
-  width: 90px;
+  width: 50px;
   height: auto;
 }

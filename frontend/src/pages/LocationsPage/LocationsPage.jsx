@@ -7,6 +7,8 @@ import axios from "axios"
 import useAuth from "../../hooks/useAuth"
 import DisplayLocations from "../../components/DisplayLocations/DisplayLocations";
 import EditLocations from "../../components/EditLocations/EditLocations";
+import "./LocationsPage.css"
+import Navbar from "../../components/NavBar/NavBar";
 
 
 
@@ -103,33 +105,37 @@ const LocationsPage = (props) => {
 
 
     return ( 
-        <div>
-        <h1>Your Locations!</h1>
-        <form onSubmit={handleEditFormSubmit}>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Plant</th>
-                        <th>Location</th>
-                        <th>Actions</th>
-                        
-                    </tr>
+        <div className="locationsPage">
+            < Navbar />
+            <h1 className="plantGreeting"> {user.username} Locations!</h1>
+            <form onSubmit={handleEditFormSubmit}>
+                <table className="table table-sm table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Plant</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Actions</th>
+                            
+                        </tr>
 
-                </thead>
-                <tbody>
-                    {locations.map((location) =>(
-                    <Fragment>
-                        {editLocationId === location.id ? (
-                            < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
-                        ) : (
-                            < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
-                        )}               
-                    </Fragment>                      
-                    ))}
-                </tbody>
-            </table>
-        </form>
-        <Link to="/addlocation"> Add Location</Link>
+                    </thead>
+                    <tbody>
+                        {locations.map((location) =>(
+                        <Fragment>
+                            {editLocationId === location.id ? (
+                                < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                            ) : (
+                                < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
+                            )}               
+                        </Fragment>                      
+                        ))}
+                    </tbody>
+                </table>
+                <button className="addButton">
+                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addlocation"> Add Location</Link> 
+                </button>            
+            </form>
+
         
     </div>
     );

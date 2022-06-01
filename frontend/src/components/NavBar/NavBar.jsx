@@ -12,20 +12,26 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <ul>
-        <li className="brand">
-          <Link to="/" style={{ textDecoration: "none", color: "#FFAE00 "}}>
-            <h3>Scion Gardens</h3>
+        <li>
+          < Link to="/">
             <img className="logo" src={logo} alt="Logo Image" />
           </Link>
         </li>
+        <li className="brand">
+          <Link to="/" style={{ textDecoration: "none", color: "#FFAE00 "}}>
+            <h2 className="navBarLabel">Scion Gardens</h2>
+            
+          </Link>
+        </li>
+
         <li className="plantCollections">
-          <Link to="/plantcollections" style={{textDecoration: "none", color: "white"}}>Plant Collections</Link>
+          <Link to="/plantcollections" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Plant Collections</h4></Link>
         </li>
         <li className="locations">
-          <Link to="/locations" style={{textDecoration: "none", color: "white"}}>Locations</Link>
+          <Link to="/locations" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Locations</h4></Link>
         </li>
         <li className="reminders">
-          <Link to="/reminders" style={{textDecoration: "none", color: "white"}}>Reminders</Link>
+          <Link to="/reminders" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Reminders</h4></Link>
         </li>
         <li>
           {user ? (
@@ -35,6 +41,7 @@ const Navbar = () => {
           )}
         </li>
       </ul>
+      
     </div>
   );
 };

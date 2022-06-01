@@ -29,6 +29,7 @@ import CreateReminders from "./components/CreateReminders/CreateReminders";
 
 
 
+
 function App() {
   return (
     <div>
@@ -49,8 +50,10 @@ function App() {
         }
         />
         <Route path= "/addplant" element={
-          <PrivateRoute>
-            <CreatePlantCollection />
+          <PrivateRoute >
+            <div className="addPage">
+              <CreatePlantCollection />  
+            </div>
           </PrivateRoute>
         }
         />
@@ -68,7 +71,9 @@ function App() {
         />
         <Route path= "/addlocation" element={
           <PrivateRoute>
-            <CreateLocation />
+            <div className="addPage">
+              <CreateLocation />
+            </div>
           </PrivateRoute>
         }
         />

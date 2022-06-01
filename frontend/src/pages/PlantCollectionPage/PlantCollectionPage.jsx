@@ -133,10 +133,11 @@ const PlantCollectionPage = (props) => {
         
         <div className="plantPage">
             < Navbar />
-                <form onSubmit={handleEditFormSubmit} >
+            <form onSubmit={handleEditFormSubmit} >
                 <h1 className="plantGreeting"> {user.username} Plant Collections!</h1>
                 <table className="table table -sm table-dark">
                     <thead>
+                        
                         <tr>
                             <th scope="col">Plant</th>
                             <th scope="col">Sunlight</th>
@@ -159,7 +160,7 @@ const PlantCollectionPage = (props) => {
                         ))}
                     </tbody>
                 </table>
-                <button className="addPlantButton">
+                <button className="addButton">
                     <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"> Add Plant</Link>
                 </button>
             </form>        

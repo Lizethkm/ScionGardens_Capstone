@@ -12,14 +12,23 @@
 }
 
 
-
-.addPlantButton{
-    background-color: rgba(12, 68, 12, 0.784);
+.addButton{
+    color: green;
+    outline-color: green;
+   
     
 }
 
 h1.plantGreeting{
+    display: flex;
+    justify-content: center;
     background-color: #212529;
     
+    
     color: #FFAE00;
+}
+
+.addLabel{
+    outline: #ffae00a0 solid 10px;
+    background-color: #ffae00a0;
 }

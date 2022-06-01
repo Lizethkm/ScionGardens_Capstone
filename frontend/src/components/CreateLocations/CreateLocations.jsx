@@ -2,6 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth";
+import Navbar from "../NavBar/NavBar";
 
 
 
@@ -34,12 +35,13 @@ const CreateLocation = (props) => {
    
     return ( 
         <div className="container">
+            < Navbar />
             <form className="form" onSubmit={handleSubmit}>
-            <label>
+            <label className="addLabel">
                     Location:{""}
                     <input type="text" name="location" value={formData.location} onChange={handleInputChange} />
                 </label>
-                <label>
+                <label className="addLabel">
                     Plant:{""}
                     <input type="text" name="plant" value={formData.plant} onChange={handleInputChange} />
                 </label>

@@ -7,6 +7,7 @@ const DisplayPlantCollection = ({plantCollection, handleEditClick, handleDeleteC
 
 
     return ( 
+        
 
 
         <tr scope="row">

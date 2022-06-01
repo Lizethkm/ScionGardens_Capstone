@@ -2,6 +2,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth"
+import Navbar from "../NavBar/NavBar";
 
 
 let initialValues = {
@@ -35,24 +36,25 @@ const CreatePlantCollection = (props) => {
 
     return ( 
         <div className="container">
+            < Navbar />
             <form className="form" onSubmit={handleSubmit}>
-                <label>
+                <label className="addLabel">
                     Plant:{""}
                     <input type="text" name="plant" value={formData.plant} onChange={handleInputChange} />
                 </label>
-                <label>
+                <label className="addLabel">
                     Sunlight:{""}
                     <input type="text" name="sunlight" value={formData.sunlight} onChange={handleInputChange} />
                 </label>
-                <label>
+                <label className="addLabel">
                     Water:{""}
                     <input type="text" name="water" value={formData.water} onChange={handleInputChange} />
                 </label>
-                <label>
+                <label className="addLabel">
                     Maintenance:{""}
                     <input type="text" name="maintenance" value={formData.maintenance} onChange={handleInputChange} />
                 </label>
-                <button>Add Plant</button>
+                <button className="addButton">Add Plant</button>
             </form>
         </div>
     );
