@@ -4,9 +4,9 @@
 const DisplayReminders = ({reminder, handleEditClick, handleDeleteClick}, props) => {
     return ( 
 
-        <tr>
+        <tr scope="row">
             <td>{reminder.priority}</td>
-            <td>{reminder.plant}</td>
+            <td>{reminder.plant_plant}</td>
             <td>{reminder.reminder}</td>
             <td>{reminder.expired_date}</td>
             <td>

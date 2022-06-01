@@ -1,0 +1,25 @@
+.remindersPage{
+    background-image: url(../../assests/plantPageBackground.jpg);
+    background-size: contain;
+    background-position:  no-repeat;  
+    position:fixed;
+    top: 0;   
+    left: 0;  
+    right: 0;
+    bottom: 0;
+    min-width: 10%;
+    min-height: 10%;
+}
+
+
+
+
+caption{
+    caption-side: top;
+    background-color: #212529;
+    padding-left: 40%;
+}
+
+h1{
+    color: #FFAE00
+}

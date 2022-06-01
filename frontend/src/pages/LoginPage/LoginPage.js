@@ -44,11 +44,12 @@ const LoginPage = () => {
           {isServerError ? (
             <p className="error">Login failed, incorrect credentials!</p>
           ) : null} 
-            <Link to="/register">Click to register!</Link>         
-
-          <button className="loginButton">Login!</button>
+          <button className="loginButton">Login</button>
+          <button className="loginButton"><Link style={{ textDecoration: "none", color: "green"}} to="/register">Register</Link></button>
         </form>
-      </div>
+        
+        
+      </div>              
     </div>
   );
 };

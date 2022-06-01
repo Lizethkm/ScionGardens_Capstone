@@ -91,7 +91,9 @@ function App() {
         />
         <Route path= "/addreminder" element={
           <PrivateRoute>
-            < CreateReminders />
+            <div className="addPage">
+              < CreateReminders />
+            </div>
           </PrivateRoute>
         }
         />

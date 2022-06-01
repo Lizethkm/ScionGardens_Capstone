@@ -39,7 +39,7 @@ const LocationsPage = (props) => {
 
     const [editLocationId, setEditLocationId] = useState(null);
     const [editFormData, setEditFormData] = useState({
-        plant: "",
+        plant_name: "",
         location: ""
     })
 
@@ -48,7 +48,7 @@ const LocationsPage = (props) => {
         setEditLocationId(location.id); 
 
         const formValues = {
-            plant: location.plant,
+            plant_name: location.plant_name,
             location: location.location,
         }
 
@@ -72,7 +72,7 @@ const LocationsPage = (props) => {
 
         const editedLocation = {
             id: editLocationId,
-            plant: editFormData.plant,
+            plant_name: editFormData.plant_name,
             location: editFormData.location
         }
 
@@ -107,7 +107,7 @@ const LocationsPage = (props) => {
     return ( 
         <div className="locationsPage">
             < Navbar />
-            <h1 className="plantGreeting"> {user.username} Locations!</h1>
+
             <form onSubmit={handleEditFormSubmit}>
                 <table className="table table-sm table-dark">
                     <thead>
@@ -130,13 +130,12 @@ const LocationsPage = (props) => {
                         </Fragment>                      
                         ))}
                     </tbody>
+                    <caption><h1>{user.username} Locations</h1></caption>
                 </table>
-                <button className="addButton">
-                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addlocation"> Add Location</Link> 
-                </button>            
+           
             </form>
 
-        
+            <button><Link  to="/addlocation" > Add Location</Link></button> 
     </div>
     );
 }

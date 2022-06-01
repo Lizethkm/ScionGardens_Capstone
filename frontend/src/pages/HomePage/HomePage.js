@@ -24,7 +24,6 @@ const HomePage = () => {
         },
       });
       setReminders(response.data);
-      console.log(response.data)
     } catch (error) {
       console.log(error.response.data); 
     }
@@ -37,30 +36,6 @@ const HomePage = () => {
     fetchReminders();
   }, [token]);
 
-
-
-  // function compareDates(reminders){
-
-  //   const today = new Date();
-  //   const currentDate = today.getFullYear() + "-" + (today.getMonth()+1) + "-" + today.getDate();
-  //   console.log("Current Date:", currentDate)
-
-
-  //   debugger
-  //   const expiredReminders = reminders.filter((el) => {
-  //     if (el.expired_date.getFullYear() < currentDate.getFullYear && el.expired_date.getMonth() < currentDate.getMonth() && el.expired_date.getDate() < currentDate.getDate()){
-  //       return true
-  //     }
-      
-  //   })
-  //   console.log("Expired Reminders", expiredReminders)
-  //   setReminders(expiredReminders)
-
-    
-  // }
-
-  
-  // compareDates();
 
 
 
@@ -81,7 +56,7 @@ const HomePage = () => {
           }
         }).map((el) => (
           <p key={el.id}>
-            {el.priority} {el.reminder} {el.expired_date} {el.plant_name}
+            {el.reminder} {el.plant_plant} {el.expired_date} 
           </p>
           
         ))}

@@ -7,7 +7,7 @@ const EditLocations = ({editFormData, handleEditFormChange}, props) => {
         <td>
             <label>
                 Plant:
-                <input type="text" required = "required" name="plant" value={editFormData.plant} onChange={handleEditFormChange}/>
+                <input type="text" required = "required" name="plant_name" value={editFormData.plant_name} onChange={handleEditFormChange}/>
             </label>
         </td>
         <td>

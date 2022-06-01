@@ -7,6 +7,8 @@ import axios from "axios"
 import useAuth from "../../hooks/useAuth"
 import DisplayReminders from "../../components/DisplayReminders/DisplayReminders";
 import EditReminders from "../../components/EditReminders/EditReminders";
+import "./RemindersPage.css"
+import Navbar from "../../components/NavBar/NavBar";
 
 
 const ReminderPage = (props) => {
@@ -35,7 +37,7 @@ const ReminderPage = (props) => {
     const [editReminderId, setEditReminderId] = useState(null);
     const [editFormData, setEditFormData] = useState({
         priority: "",
-        plant: "",
+        plant_plant: "",
         reminder: "",
         expired_date: "",
     })
@@ -46,7 +48,7 @@ const ReminderPage = (props) => {
 
         const formValues = {
             priority: reminder.priority,
-            plant: reminder.plant,
+            plant_plant: reminder.plant_plant,
             reminder: reminder.reminder,
             expired_date: reminder.expired_date,
         }
@@ -72,7 +74,7 @@ const ReminderPage = (props) => {
         const editedReminder = {
             id: editReminderId,
             priority: editFormData.priority,
-            plant: editFormData.plant,
+            plant_plant: editFormData.plant_plant,
             reminder: editFormData.reminder,
             expired_date: editFormData.expired_date,
         }
@@ -81,7 +83,7 @@ const ReminderPage = (props) => {
             headers: {
                 Authorization: "Bearer " + token
             }
-        })
+        });
 
         setEditReminderId(null);
         setEditFormData(null);
@@ -97,26 +99,27 @@ const ReminderPage = (props) => {
             }
         })
 
-        debugger
+        
         fetchReminders();
-        alert("Delete Successful")
+        
     }
 
 
 
 
     return ( 
-        <div>
-        <h1>Your reminder!</h1>
+        <div className="remindersPage">
+            < Navbar />
+        
         <form onSubmit={handleEditFormSubmit}>
-            <table>
+            <table className="table table-sm table-dark">
                 <thead>
                     <tr>
-                        <th>Priority</th>
-                        <th>Plant</th>
-                        <th>Reminder</th>
-                        <th>Expiration Date</th>
-                        <th>Actions</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Plant</th>
+                        <th scope="col">Reminder</th>
+                        <th scope="col">Expiration Date</th>
+                        <th scope="col">Actions</th>
                         
                     </tr>
 
@@ -132,9 +135,13 @@ const ReminderPage = (props) => {
                     </Fragment>                      
                     ))}
                 </tbody>
+                <caption><h1>{user.username} Reminders</h1></caption>
             </table>
+            <button className="addButton">
+                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"> Add Reminder</Link>
+            </button>
         </form>
-        <Link to="/addReminder"> Add Reminder</Link>
+        
         
     </div>
     );

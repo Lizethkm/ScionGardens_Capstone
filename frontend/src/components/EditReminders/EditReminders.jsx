@@ -13,7 +13,7 @@ const EditReminders = ({editFormData, handleEditFormChange}, props) => {
         <td>
             <label>
                 Plant:
-                <input type="text" required = "required" name="plant" value={editFormData.plant} onChange={handleEditFormChange}/>
+                <input type="text" required = "required" name="plant_plant" value={editFormData.plant_plant} onChange={handleEditFormChange}/>
             </label>
         </td>
         <td>
