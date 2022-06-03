@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import axios from "axios";
 
 import "./HomePage.css"
+import Navbar from "../../components/NavBar/NavBar";
 
 
 const HomePage = () => {
@@ -43,6 +44,7 @@ const HomePage = () => {
 
   return (
     <div className="homePage">
+      < Navbar />
       <div className="container">
 
         <h1 className="homeGreeting">Welcome {user.username}!</h1>

@@ -30,10 +30,12 @@ import CreateReminders from "./components/CreateReminders/CreateReminders";
 
 
 
+
+
 function App() {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route
           path="/"

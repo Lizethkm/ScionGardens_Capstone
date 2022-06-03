@@ -38,19 +38,19 @@ const CreatePlantCollection = (props) => {
         <div className="container">
             < Navbar />
             <form className="form" onSubmit={handleSubmit}>
-                <label className="addLabel">
+                <label >
                     Plant:{""}
                     <input type="text" name="plant" value={formData.plant} onChange={handleInputChange} />
                 </label>
-                <label className="addLabel">
+                <label >
                     Sunlight:{""}
                     <input type="text" name="sunlight" value={formData.sunlight} onChange={handleInputChange} />
                 </label>
-                <label className="addLabel">
+                <label >
                     Water:{""}
                     <input type="text" name="water" value={formData.water} onChange={handleInputChange} />
                 </label>
-                <label className="addLabel">
+                <label >
                     Maintenance:{""}
                     <input type="text" name="maintenance" value={formData.maintenance} onChange={handleInputChange} />
                 </label>

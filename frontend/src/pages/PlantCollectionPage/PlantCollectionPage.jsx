@@ -10,6 +10,7 @@ import { Fragment } from "react/cjs/react.production.min";
 import EditPlantCollections from "../../components/EditPlantCollection/EditPlantCollection";
 import "./PlantCollectionPage.css"
 import Navbar from "../../components/NavBar/NavBar";
+import CreatePlantCollection from "../../components/CreatePlantCollection/CreatePlantCollection";
 
 
 
@@ -19,7 +20,6 @@ const PlantCollectionPage = (props) => {
     const [user, token] = useAuth()
     const navigate = useNavigate()
     const [plantCollections, setPlantCollections] = useState([]);
-
 
 
 
@@ -37,7 +37,7 @@ const PlantCollectionPage = (props) => {
     };
 
     useEffect(() => {
-        fetchPlantCollections();
+        fetchPlantCollections()
     }, [token]);
 
 
@@ -101,9 +101,6 @@ const PlantCollectionPage = (props) => {
             }
         })
 
-        
-        
-        
         setEditPlantCollectionId(null);
         setEditFormData(null);
         fetchPlantCollections();
@@ -135,7 +132,7 @@ const PlantCollectionPage = (props) => {
             < Navbar />
             <form onSubmit={handleEditFormSubmit} >
                 
-                <table className="table table -sm table-dark">
+                <table className="table table-sm table-dark">
                     <thead>
                         
                         <tr>
@@ -161,10 +158,11 @@ const PlantCollectionPage = (props) => {
                     </tbody>
                     <caption><h1>{user.username} Plant Collections</h1></caption>
                 </table>
-                <button className="addButton">
-                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"> Add Plant</Link>
-                </button>
-            </form>        
+                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"><button className="addButton">Add Plant</button> </Link>
+
+            </form> 
+            {/* < CreatePlantCollection fetchPlantCollections = {fetchPlantCollections} />    */}
+                
         </div>   
 
 
