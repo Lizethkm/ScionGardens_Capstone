@@ -140,8 +140,12 @@ const ReminderPage = (props) => {
                 </tbody>
                 <caption><h1>{user.username} Reminders</h1></caption>
             </table>
-            <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"><button className="addButton">Add Reminder</button> </Link>
+            
         </div>
+        <div className="container">
+         <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"><button className="addButton">Add Reminder</button> </Link>
+        </div>
+        
         
         </form>
         

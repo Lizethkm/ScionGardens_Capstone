@@ -133,6 +133,9 @@ const LocationsPage = (props) => {
                     </tbody>
                     <caption><h1>{user.username} Locations</h1></caption>
                 </table>
+                
+            </div>
+            <div className="container">
                 <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addlocation"><button className="addButton">Add Location</button> </Link>
             </div>          
             </form>

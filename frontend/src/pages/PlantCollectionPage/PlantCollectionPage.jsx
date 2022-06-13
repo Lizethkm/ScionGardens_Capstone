@@ -158,9 +158,11 @@ const PlantCollectionPage = (props) => {
                     </tbody>
                     <caption><h1>{user.username} Plant Collections</h1></caption>
                 </table>
-
-                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"><button className="addButton">Add Plant</button> </Link>
                 </div>
+                <div className="container">
+                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"><button className="addButton">Add Plant</button> </Link>         
+                </div>
+                
                
                 
 
