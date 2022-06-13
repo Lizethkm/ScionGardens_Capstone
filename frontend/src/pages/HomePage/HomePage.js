@@ -6,6 +6,7 @@ import axios from "axios";
 
 import "./HomePage.css"
 import Navbar from "../../components/NavBar/NavBar";
+import UpcomingReminders from "../../components/UpcomingReminders/UpcomingReminders";
 
 
 const HomePage = () => {
@@ -39,9 +40,6 @@ const HomePage = () => {
 
 
 
-
-
-
   return (
     <div className="homePage">
       < Navbar />
@@ -49,21 +47,35 @@ const HomePage = () => {
 
         <h1 className="homeGreeting">Welcome {user.username}!</h1>
 
-        <h3> Expired Reminders</h3>
+        
 
-        {reminders && 
-        reminders.filter((el) =>{
-          if(el.expired_date < el.updated_date){
-            return true
-          }
-        }).map((el) => (
-          <p key={el.id}>
-            {el.reminder} {el.plant_plant} {el.expired_date} 
-          </p>
-          
-        ))}
-    
-      </div>      
+        <div class="list-group">
+          <a href="/reminders" class="list-group-item list-group-item-dark">
+          <h3 className="h3"> Expired Reminders</h3>
+          </a>
+          <a href="/reminders" class="list-group-item list-group-item-action">
+          {reminders && 
+            reminders.filter((el) =>{
+              if(el.expired_date < el.updated_date){
+                return true
+              }
+            }).map((el) => (
+              <div key={el.id}>
+                <a href="/reminders" class="list-group-item list-group-item-danger">
+                  {el.reminder} {el.plant_plant} {el.expired_date}</a>
+                
+              </div>
+              
+            ))}
+
+          </a>
+        
+        </div>
+
+
+
+      </div> 
+      {/* < UpcomingReminders reminders = {reminders} />      */}
     </div>
 
   );

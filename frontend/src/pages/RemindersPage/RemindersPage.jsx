@@ -11,6 +11,7 @@ import "./RemindersPage.css"
 import Navbar from "../../components/NavBar/NavBar";
 
 
+
 const ReminderPage = (props) => {
 
     const [user, token] = useAuth()
@@ -110,6 +111,7 @@ const ReminderPage = (props) => {
     return ( 
         <div className="remindersPage">
             < Navbar />
+            
         
         <form onSubmit={handleEditFormSubmit}>
             <table className="table table-sm table-dark">

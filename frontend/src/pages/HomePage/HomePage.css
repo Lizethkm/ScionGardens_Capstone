@@ -3,7 +3,10 @@ h1.homeGreeting{
     
 }
 
-.homePage{
-    color: #F20505;
-    
+.h3{
+    color: #F20505;    
+}
+
+a.list-group{
+    justify-content: center;
 }
