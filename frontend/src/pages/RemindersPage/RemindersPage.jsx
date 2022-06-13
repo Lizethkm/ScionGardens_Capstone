@@ -114,6 +114,7 @@ const ReminderPage = (props) => {
             
         
         <form onSubmit={handleEditFormSubmit}>
+        <div className="container table-responsive">
             <table className="table table-sm table-dark">
                 <thead>
                     <tr>
@@ -139,9 +140,9 @@ const ReminderPage = (props) => {
                 </tbody>
                 <caption><h1>{user.username} Reminders</h1></caption>
             </table>
-            <button className="addButton">
-                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"> Add Reminder</Link>
-            </button>
+            <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"><button className="addButton">Add Reminder</button> </Link>
+        </div>
+        
         </form>
         
         

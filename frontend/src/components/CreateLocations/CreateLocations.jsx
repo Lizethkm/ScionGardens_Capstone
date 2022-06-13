@@ -37,11 +37,11 @@ const CreateLocation = (props) => {
         <div className="container">
             < Navbar />
             <form className="form" onSubmit={handleSubmit}>
-                <label className="addLabel">
+                <label>
                     Location:{""}
                     <input type="text" name="location" value={formData.location} onChange={handleInputChange} />
                 </label>
-                <label className="addLabel">
+                <label>
                     Plant:{""}
                     <input type="text" name="plant_name" value={formData.plant_name} onChange={handleInputChange} />
                 </label>

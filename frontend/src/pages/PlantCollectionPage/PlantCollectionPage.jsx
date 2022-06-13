@@ -128,11 +128,11 @@ const PlantCollectionPage = (props) => {
     return ( 
         
         
-        <div className="plantPage">
+        <div className="plantPage" >
             < Navbar />
             <form onSubmit={handleEditFormSubmit} >
-                
-                <table className="table table-sm table-dark">
+                <div className="container table-responsive">
+                    <table className="table table-sm table-dark">
                     <thead>
                         
                         <tr>
@@ -158,7 +158,11 @@ const PlantCollectionPage = (props) => {
                     </tbody>
                     <caption><h1>{user.username} Plant Collections</h1></caption>
                 </table>
+
                 <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"><button className="addButton">Add Plant</button> </Link>
+                </div>
+               
+                
 
             </form> 
             {/* < CreatePlantCollection fetchPlantCollections = {fetchPlantCollections} />    */}

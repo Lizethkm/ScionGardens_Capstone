@@ -109,6 +109,7 @@ const LocationsPage = (props) => {
             < Navbar />
 
             <form onSubmit={handleEditFormSubmit}>
+            <div className="container table-responsive">
                 <table className="table table-sm table-dark">
                     <thead>
                         <tr>
@@ -132,10 +133,9 @@ const LocationsPage = (props) => {
                     </tbody>
                     <caption><h1>{user.username} Locations</h1></caption>
                 </table>
-           
+                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addlocation"><button className="addButton">Add Location</button> </Link>
+            </div>          
             </form>
-
-            <button><Link  to="/addlocation" > Add Location</Link></button> 
     </div>
     );
 }

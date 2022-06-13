@@ -36,24 +36,24 @@ const CreateReminders = (props) => {
    
    
     return ( 
-        <div className="createReminderPage">
+        <div className="container">
             < Navbar />
             <div className="container">
                     
                     <form className="form" onSubmit={handleSubmit}>
-                        <label className="addLabel">
+                        <label>
                                 Priority:{""}
                                 <input type="text" name="priority" value={formData.priority} onChange={handleInputChange} />
                             </label>
-                            <label className="addLabel">
+                            <label>
                                 Plant:{""}
                                 <input type="text" name="plant_plant" value={formData.plant_plant} onChange={handleInputChange} />
                             </label>
-                            <label className="addLabel">
+                            <label>
                                 Reminder:{""}
                                 <input type="text" name="reminder" value={formData.reminder} onChange={handleInputChange} />
                             </label>
-                            <label className="addLabel">
+                            <label>
                                 Expiration Date:{""}
                                 <input type="date" name="expired_date" value={formData.expired_date} onChange={handleInputChange} />
                             </label>

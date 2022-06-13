@@ -13,8 +13,8 @@
 
 
 .addButton{
-    color: green;
-    outline-color: green;
+    border: 2px solid green;
+    color: #FFAE00;
    
     
 }
@@ -28,7 +28,15 @@ h1.plantGreeting{
     color: #FFAE00;
 }
 
-.addLabel{
-    outline: #ffae00a0 solid 10px;
-    background-color: #ffae00a0;
+
+.table-responsive {
+    overflow-y: auto;
+    height: 500px;
+}
+
+tbody {
+    text-align: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 140px;
 }
