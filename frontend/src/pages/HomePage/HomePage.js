@@ -7,6 +7,7 @@ import axios from "axios";
 import "./HomePage.css"
 import Navbar from "../../components/NavBar/NavBar";
 import UpcomingReminders from "../../components/UpcomingReminders/UpcomingReminders";
+import SortTable from "../../components/SortTable/SortTable";
 
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
   const [user, token] = useAuth();
   const [reminders, setReminders] = useState([]);
 
+  const [homeLocations, setHomeLocations] = useState([]);
   
 
   const fetchReminders = async () => {
@@ -37,6 +39,24 @@ const HomePage = () => {
 
     fetchReminders();
   }, [token]);
+
+  const fetchHomeLocations = async () => {
+    try {
+        let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
+            headers: {
+                Authorization: "Bearer " + token,
+            },
+        });
+        setHomeLocations(locations.data);
+    } catch (error) {
+        console.log(error.locations.data);
+    }
+  };
+
+  useEffect(() => {
+      fetchHomeLocations();
+  }, [token]);
+
 
 
 
@@ -75,6 +95,7 @@ const HomePage = () => {
 
 
       </div> 
+      < SortTable homeLocations = {homeLocations} setHomeLocations = {setHomeLocations} reminders = {reminders}/>
       {/* < UpcomingReminders reminders = {reminders} />      */}
     </div>
 
