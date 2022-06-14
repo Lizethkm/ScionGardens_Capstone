@@ -9,4 +9,22 @@ h1.homeGreeting{
 
 a.list-group{
     justify-content: center;
+    background-color: #7F8C64;
 }
+
+.expired{
+    margin: 1%;
+    margin-left: 274px;
+    max-width: 730px;
+    overflow: auto;
+}
+
+
+.container.table-responsive.home{
+    max-height: 250px;
+    overflow-y: auto;
+    max-width: 730px;
+    border-radius: 1%;
+}
+
+

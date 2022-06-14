@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import {BiSort} from "react-icons/bi"
-
-
-
-
-
+import { Link } from 'react-router-dom';
 
 
 
@@ -35,45 +31,49 @@ const SortTable = (props) => {
 
     return (  
         <div className="container">
-        <table className="table table-sm table-dark">
-            <thead>
-                <tr>
-                    <th onClick={() => sorting("plant_name")} scope="col">Plant <BiSort /></th>
-                    <th onClick={() => sorting("location")} scope="col">Location <BiSort /></th>
-                    {/* <th scope="col">Reminder</th> */}
-                    <th scope="col">Actions</th>
-                    
-                </tr>
-
-            </thead>
-            <tbody>
-                {props.homeLocations.map((el) =>(
-                
-                    <tr key={el.id}>
-                       <td>{el.plant_name}</td> 
-                       <td>{el.location}</td> 
-                    </tr> 
-
-                                      
-                ))}
-
-            </tbody>
-            {/* <tbody>
-                {props.reminders.filter((el) => {
-                    debugger
-                    if (el.plant_plant === props.homeLocations.plant_name.map((el) => {
-                        return el.plant_name
-                    })){
-                        return true
-                    }
-                }).map((el) => {
-                    <tr key={el.id}>
-                        <td>{el.reminder}</td>
+        <div className="container table-responsive home">
+            <table className="table table-sm table-dark">
+                <thead>
+                    <tr>
+                        <th onClick={() => sorting("plant_name")} scope="col"><Link to="/plantcollections" style={{textDecoration: "none", color: "white"}}>Plant</Link><BiSort /></th>
+                        <th onClick={() => sorting("location")} scope="col"><Link to="/locations" style={{textDecoration: "none", color: "white"}} >Location</Link><BiSort /></th>
+                        {/* <th scope="col">Reminder</th> */}
+                        <th scope="col">Actions</th>
+                        
                     </tr>
-                })}
-            </tbody> */}
-            <caption><h1>Locations</h1></caption>
-        </table>
+
+                </thead>
+                <tbody>
+                    {props.homeLocations.map((el) =>(
+                    
+                        <tr key={el.id}>
+                        <td>{el.plant_name}</td> 
+                        <td>{el.location}</td> 
+                        <td><Link to="/reminders"><button>Reminder</button></Link></td>
+                        </tr> 
+
+                                        
+                    ))}
+
+                </tbody>
+                {/* <tbody>
+                    {props.reminders.filter((el) => {
+                        debugger
+                        if (el.plant_plant === props.homeLocations.plant_name.map((el) => {
+                            return el.plant_name
+                        })){
+                            return true
+                        }
+                    }).map((el) => {
+                        <tr key={el.id}>
+                            <td>{el.reminder}</td>
+                        </tr>
+                    })}
+                </tbody> */}
+                <caption><h1> Quick View</h1></caption>
+            </table>
+        </div>
+       
         
     </div>
     );

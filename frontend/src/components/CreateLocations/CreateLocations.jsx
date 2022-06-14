@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth";
 import Navbar from "../NavBar/NavBar";
@@ -46,6 +46,7 @@ const CreateLocation = (props) => {
                     <input type="text" name="plant_name" value={formData.plant_name} onChange={handleInputChange} />
                 </label>
                 <button>Add Location</button>
+                <Link to="/locations"><button>Cancel</button></Link>
                 
             </form>
             

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth"
 import Navbar from "../NavBar/NavBar";
@@ -55,6 +55,7 @@ const CreatePlantCollection = (props) => {
                     <input type="text" name="maintenance" value={formData.maintenance} onChange={handleInputChange} />
                 </label>
                 <button className="addButton">Add Plant</button>
+                <Link to="/plantcollections"><button>Cancel</button></Link>
             </form>
         </div>
     );
