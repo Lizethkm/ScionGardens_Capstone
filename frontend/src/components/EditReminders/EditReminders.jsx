@@ -1,7 +1,7 @@
 
 
 
-const EditReminders = ({editFormData, handleEditFormChange}, props) => {
+const EditReminders = ({editFormData, handleEditFormChange, handleCancelClick}, props) => {
     return ( 
         <tr>
         <td>
@@ -30,6 +30,7 @@ const EditReminders = ({editFormData, handleEditFormChange}, props) => {
         </td>
         <td>
             <button type="submit">Save</button>
+            <button onClick={handleCancelClick}>Cancel</button>
         </td>
     </tr>
     );

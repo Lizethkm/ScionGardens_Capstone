@@ -9,6 +9,8 @@ import DisplayReminders from "../../components/DisplayReminders/DisplayReminders
 import EditReminders from "../../components/EditReminders/EditReminders";
 import "./RemindersPage.css"
 import Navbar from "../../components/NavBar/NavBar";
+import {BiSort} from "react-icons/bi"
+import CreateReminders from "../../components/CreateReminders/CreateReminders";
 
 
 
@@ -91,6 +93,10 @@ const ReminderPage = (props) => {
         fetchReminders(); 
     };
 
+    const handleCancelClick = () =>{
+        setEditReminderId(null);
+    }
+
     const handleDeleteClick = (reminder) =>{
 
         
@@ -103,6 +109,46 @@ const ReminderPage = (props) => {
         
         fetchReminders();
         
+    }
+
+    const[sort, setSort] = useState("ASC")
+
+    const sorting = (col) =>{
+        if(sort === "ASC"){
+            const sorted = [...reminders].sort((a,b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+
+            );
+            setReminders(sorted)
+            setSort("DSC")
+        }
+        if(sort === "DSC"){
+            const sorted = [...reminders].sort((a,b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+
+            );
+            setReminders(sorted)
+            setSort("ASC")
+        }
+    }
+
+    const [intSort, setIntSort] = useState("ASC")
+
+    const intSorting = (col) => {
+        if(intSort === "ASC"){
+            const sorted = [...reminders].sort((a,b) =>
+            a[col] > b[col]? 1 :-1 
+            );
+            setReminders(sorted)
+            setIntSort("DSC")
+        }
+        if(intSort === "DSC"){
+            const sorted = [...reminders].sort((a,b) =>
+            a[col] < b[col]? 1 :-1 
+            );
+            setReminders(sorted)
+            setIntSort("ASC")
+        }
     }
 
 
@@ -118,10 +164,10 @@ const ReminderPage = (props) => {
             <table className="table table-sm table-dark">
                 <thead>
                     <tr>
-                        <th scope="col">Priority</th>
-                        <th scope="col">Plant</th>
-                        <th scope="col">Reminder</th>
-                        <th scope="col">Expiration Date</th>
+                        <th onClick={() => intSorting("priority")} scope="col">Priority <BiSort /></th>
+                        <th onClick={() => sorting("plant_plant")} scope="col">Plant <BiSort /></th>
+                        <th onClick={() => sorting("reminder")} scope="col">Reminder <BiSort /></th>
+                        <th onClick={() => sorting("expired_date")} scope="col">Expiration Date <BiSort /></th>
                         <th scope="col">Actions</th>
                         
                     </tr>
@@ -131,7 +177,7 @@ const ReminderPage = (props) => {
                     {reminders.map((reminder) =>(
                     <Fragment>
                         {editReminderId === reminder.id ? (
-                            < EditReminders editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                            < EditReminders editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} handleCancelClick = {handleCancelClick} />
                         ) : (
                             < DisplayReminders reminder = {reminder} reminders = {reminders} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
                         )}               
@@ -141,15 +187,10 @@ const ReminderPage = (props) => {
                 <caption><h1>{user.username} Reminders</h1></caption>
             </table>
             
-        </div>
-        <div className="container">
-         <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addReminder"><button className="addButton">Add Reminder</button> </Link>
-        </div>
-        
-        
+        </div>        
         </form>
         
-        
+        < CreateReminders fetchReminders={fetchReminders}/>
     </div>
     );
 }

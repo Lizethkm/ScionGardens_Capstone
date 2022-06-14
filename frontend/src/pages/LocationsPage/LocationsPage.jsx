@@ -9,6 +9,8 @@ import DisplayLocations from "../../components/DisplayLocations/DisplayLocations
 import EditLocations from "../../components/EditLocations/EditLocations";
 import "./LocationsPage.css"
 import Navbar from "../../components/NavBar/NavBar";
+import CreateLocation from "../../components/CreateLocations/CreateLocations";
+import {BiSort} from "react-icons/bi"
 
 
 
@@ -87,6 +89,10 @@ const LocationsPage = (props) => {
         fetchLocations(); 
     };
 
+    const handleCancelClick = () =>{
+        setEditLocationId(null);
+    }
+
     const handleDeleteClick = (location) =>{
 
         
@@ -101,6 +107,27 @@ const LocationsPage = (props) => {
         alert("Delete Successful")
     }
 
+    const[sort, setSort] = useState("ASC")
+
+    const sorting = (col) =>{
+        if(sort === "ASC"){
+            const sorted = [...locations].sort((a,b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+
+            );
+            setLocations(sorted)
+            setSort("DSC")
+        }
+        if(sort === "DSC"){
+            const sorted = [...locations].sort((a,b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+
+            );
+            setLocations(sorted)
+            setSort("ASC")
+        }
+    }
+
 
 
 
@@ -113,8 +140,8 @@ const LocationsPage = (props) => {
                 <table className="table table-sm table-dark">
                     <thead>
                         <tr>
-                            <th scope="col">Plant</th>
-                            <th scope="col">Location</th>
+                            <th onClick={() => sorting("plant_name")} scope="col">Plant <BiSort /></th>
+                            <th onClick={() => sorting("location")} scope="col">Location <BiSort /></th>
                             <th scope="col">Actions</th>
                             
                         </tr>
@@ -124,9 +151,9 @@ const LocationsPage = (props) => {
                         {locations.map((location) =>(
                         <Fragment>
                             {editLocationId === location.id ? (
-                                < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                                < EditLocations editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} handleCancelClick = {handleCancelClick} />
                             ) : (
-                                < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick} handleDeleteClick = {handleDeleteClick} />
+                                < DisplayLocations location = {location} locations = {locations} handleEditClick = {handleEditClick}  handleDeleteClick = {handleDeleteClick} />
                             )}               
                         </Fragment>                      
                         ))}
@@ -135,10 +162,9 @@ const LocationsPage = (props) => {
                 </table>
                 
             </div>
-            <div className="container">
-                <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addlocation"><button className="addButton">Add Location</button> </Link>
-            </div>          
+        
             </form>
+            < CreateLocation fetchLocations ={fetchLocations} />
     </div>
     );
 }

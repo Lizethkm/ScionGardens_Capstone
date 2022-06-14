@@ -1,8 +1,7 @@
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth"
-import Navbar from "../NavBar/NavBar";
+
 
 
 let initialValues = {
@@ -15,8 +14,8 @@ let initialValues = {
 const CreatePlantCollection = (props) => {
 
     const [user, token] = useAuth()
-    const navigate = useNavigate()
-    const [formData, handleInputChange, handleSubmit] = useCustomForm(initialValues, postNewPlantCollection)
+
+    const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(initialValues, postNewPlantCollection)
 
     async function postNewPlantCollection(){
         try {
@@ -25,7 +24,9 @@ const CreatePlantCollection = (props) => {
                     Authorization: "Bearer " + token
                 }
             })
-            navigate("/plantcollections")
+            props.fetchPlantCollections()
+            reset();
+
         } catch (error) {
             console.log(error.response.data)
             
@@ -36,8 +37,8 @@ const CreatePlantCollection = (props) => {
 
     return ( 
         <div className="container">
-            < Navbar />
-            <form className="form" onSubmit={handleSubmit}>
+
+            <form className="form add" onSubmit={handleSubmit}>
                 <label >
                     Plant:{""}
                     <input type="text" name="plant" value={formData.plant} onChange={handleInputChange} />
@@ -55,7 +56,6 @@ const CreatePlantCollection = (props) => {
                     <input type="text" name="maintenance" value={formData.maintenance} onChange={handleInputChange} />
                 </label>
                 <button className="addButton">Add Plant</button>
-                <Link to="/plantcollections"><button>Cancel</button></Link>
             </form>
         </div>
     );

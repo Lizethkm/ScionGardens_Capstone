@@ -2,7 +2,7 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth";
-import Navbar from "../NavBar/NavBar";
+
 
 
 
@@ -16,8 +16,7 @@ let initialValues = {
 
 const CreateReminders = (props) => {
    const [user, token] = useAuth()
-   const navigate = useNavigate()
-   const [formData, handleInputChange, handleSubmit ] = useCustomForm(initialValues, postNewReminders)
+   const [formData, handleInputChange, handleSubmit, reset ] = useCustomForm(initialValues, postNewReminders)
 
    async function postNewReminders(){
        try {
@@ -26,7 +25,8 @@ const CreateReminders = (props) => {
                    Authorization: "Bearer " + token
                }
            })
-           navigate("/reminders")
+           props.fetchReminders();
+           reset();
        } catch (error) {
            console.log(error.response.data)
        }
@@ -37,10 +37,10 @@ const CreateReminders = (props) => {
    
     return ( 
         <div className="container">
-            < Navbar />
+
             <div className="container">
                     
-                    <form className="form" onSubmit={handleSubmit}>
+                    <form className="form add" onSubmit={handleSubmit}>
                         <label>
                                 Priority:{""}
                                 <input type="text" name="priority" value={formData.priority} onChange={handleInputChange} />
@@ -59,7 +59,6 @@ const CreateReminders = (props) => {
                             </label>
 
                             <button className="addButton">Add Reminder</button>
-                            <Link to="/reminders"><button>Cancel</button></Link>
                     </form>
                 </div>            
         </div>

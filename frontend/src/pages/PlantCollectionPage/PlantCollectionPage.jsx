@@ -11,6 +11,7 @@ import EditPlantCollections from "../../components/EditPlantCollection/EditPlant
 import "./PlantCollectionPage.css"
 import Navbar from "../../components/NavBar/NavBar";
 import CreatePlantCollection from "../../components/CreatePlantCollection/CreatePlantCollection";
+import {BiSort} from "react-icons/bi"
 
 
 
@@ -108,6 +109,10 @@ const PlantCollectionPage = (props) => {
      
     }
 
+    const handleCancelClick = () =>{
+        setEditPlantCollectionId(null);
+    }
+
     const handleDeleteClick = (plantCollection) => {
         
 
@@ -119,6 +124,27 @@ const PlantCollectionPage = (props) => {
 
         fetchPlantCollections();
 
+    }
+
+    const[sort, setSort] = useState("ASC")
+
+    const sorting = (col) =>{
+        if(sort === "ASC"){
+            const sorted = [...plantCollections].sort((a,b) =>
+                a[col].toLowerCase() > b[col].toLowerCase() ? 1 : -1
+
+            );
+            setPlantCollections(sorted)
+            setSort("DSC")
+        }
+        if(sort === "DSC"){
+            const sorted = [...plantCollections].sort((a,b) =>
+                a[col].toLowerCase() < b[col].toLowerCase() ? 1 : -1
+
+            );
+            setPlantCollections(sorted)
+            setSort("ASC")
+        }
     }
 
 
@@ -136,10 +162,10 @@ const PlantCollectionPage = (props) => {
                     <thead>
                         
                         <tr>
-                            <th scope="col">Plant</th>
-                            <th scope="col">Sunlight</th>
-                            <th scope="col">Water</th>
-                            <th scope="col">Maintenance</th>
+                            <th onClick={() => sorting("plant")} scope="col">Plant <BiSort /></th>
+                            <th onClick={() => sorting("sunlight")} scope="col">Sunlight <BiSort /></th>
+                            <th onClick={() => sorting("water")} scope="col">Water <BiSort /></th>
+                            <th onClick={() => sorting("maintenance")} scope="col">Maintenance <BiSort /></th>
                             <th scope="col">Actions</th>
                             
                         </tr>
@@ -149,7 +175,7 @@ const PlantCollectionPage = (props) => {
                         {plantCollections.map((plantCollection) =>(
                         <Fragment>
                             {editPlantCollectionId === plantCollection.id ? (
-                                <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} />
+                                <EditPlantCollections editFormData = {editFormData} handleEditFormChange = {handleEditFormChange} handleCancelClick = {handleCancelClick} />
                             ) : (
                                 <DisplayPlantCollection plantCollection = {plantCollection} plantCollections = {plantCollections} handleEditClick = {handleEditClick} handleDeleteClick= {handleDeleteClick} />
                             )}
@@ -159,15 +185,9 @@ const PlantCollectionPage = (props) => {
                     <caption><h1>{user.username} Plant Collections</h1></caption>
                 </table>
                 </div>
-                <div className="container">
-                    <Link style={{ textDecoration: "none", color: "#FFAE00 "}} to="/addplant"><button className="addButton">Add Plant</button> </Link>         
-                </div>
-                
-               
-                
-
+                                            
             </form> 
-            {/* < CreatePlantCollection fetchPlantCollections = {fetchPlantCollections} />    */}
+            < CreatePlantCollection fetchPlantCollections = {fetchPlantCollections} />   
                 
         </div>   
 

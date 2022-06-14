@@ -1,8 +1,8 @@
 import axios from "axios";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useCustomForm from "../../hooks/useCustomForm";
 import useAuth from "../../hooks/useAuth";
-import Navbar from "../NavBar/NavBar";
+
 
 
 
@@ -14,8 +14,8 @@ let initialValues = {
 
 const CreateLocation = (props) => {
    const [user, token] = useAuth()
-   const navigate = useNavigate()
-   const [formData, handleInputChange, handleSubmit ] = useCustomForm(initialValues, postNewLocations)
+
+   const [formData, handleInputChange, handleSubmit, reset ] = useCustomForm(initialValues, postNewLocations)
 
    async function postNewLocations(){
        try {
@@ -24,7 +24,8 @@ const CreateLocation = (props) => {
                    Authorization: "Bearer " + token
                }
            })
-           navigate("/locations")
+           props.fetchLocations();
+           reset();
        } catch (error) {
            console.log(error.response.data)
        }
@@ -35,8 +36,8 @@ const CreateLocation = (props) => {
    
     return ( 
         <div className="container">
-            < Navbar />
-            <form className="form" onSubmit={handleSubmit}>
+
+            <form className="form add" onSubmit={handleSubmit}>
                 <label>
                     Location:{""}
                     <input type="text" name="location" value={formData.location} onChange={handleInputChange} />
@@ -46,7 +47,6 @@ const CreateLocation = (props) => {
                     <input type="text" name="plant_name" value={formData.plant_name} onChange={handleInputChange} />
                 </label>
                 <button>Add Location</button>
-                <Link to="/locations"><button>Cancel</button></Link>
                 
             </form>
             

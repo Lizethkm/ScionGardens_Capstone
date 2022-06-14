@@ -1,4 +1,4 @@
-const EditPlantCollections = ( {editFormData, handleEditFormChange}, props) => {
+const EditPlantCollections = ( {editFormData, handleEditFormChange, handleCancelClick}, props) => {
 
 
     return ( 
@@ -30,6 +30,7 @@ const EditPlantCollections = ( {editFormData, handleEditFormChange}, props) => {
             </td>
             <td>
                 <button type="submit">Save</button>
+                <button onClick={handleCancelClick}>Cancel</button>
             </td>
         </tr>
     );

@@ -1,7 +1,7 @@
 
 
 
-const EditLocations = ({editFormData, handleEditFormChange}, props) => {
+const EditLocations = ({editFormData, handleEditFormChange, handleCancelClick}, props) => {
     return ( 
         <tr>
         <td>
@@ -18,6 +18,7 @@ const EditLocations = ({editFormData, handleEditFormChange}, props) => {
         </td>
         <td>
             <button type="submit">Save</button>
+            <button onClick={handleCancelClick}>Cancel</button>
         </td>
     </tr>
     );

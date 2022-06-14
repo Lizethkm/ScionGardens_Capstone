@@ -37,3 +37,8 @@ tbody {
     overflow-x: hidden;
     height: 140px;
 }
+
+.form.add{
+    display: flex;
+    flex-direction: row;
+}
