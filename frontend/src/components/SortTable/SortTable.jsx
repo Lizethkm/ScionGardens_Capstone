@@ -37,7 +37,6 @@ const SortTable = (props) => {
                     <tr>
                         <th onClick={() => sorting("plant_name")} scope="col"><Link to="/plantcollections" style={{textDecoration: "none", color: "white"}}>Plant</Link><BiSort /></th>
                         <th onClick={() => sorting("location")} scope="col"><Link to="/locations" style={{textDecoration: "none", color: "white"}} >Location</Link><BiSort /></th>
-                        {/* <th scope="col">Reminder</th> */}
                         <th scope="col">Actions</th>
                         
                     </tr>
@@ -56,20 +55,6 @@ const SortTable = (props) => {
                     ))}
 
                 </tbody>
-                {/* <tbody>
-                    {props.reminders.filter((el) => {
-                        debugger
-                        if (el.plant_plant === props.homeLocations.plant_name.map((el) => {
-                            return el.plant_name
-                        })){
-                            return true
-                        }
-                    }).map((el) => {
-                        <tr key={el.id}>
-                            <td>{el.reminder}</td>
-                        </tr>
-                    })}
-                </tbody> */}
                 <caption><h1> Quick View</h1></caption>
             </table>
         </div>
