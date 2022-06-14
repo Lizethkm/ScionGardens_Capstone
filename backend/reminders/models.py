@@ -1,11 +1,11 @@
+from datetime import timedelta
+from pyexpat import model
 from django.db import models
 from django.forms import DateTimeField
 from pytz import timezone
 from authentication.models import User
 from scion_gardens.models import PlantCollection
-# from drf_jwt_backend.settings import DATETIME_FORMAT
 
-# Create your models here.
 
 
 class Reminder(models.Model):
