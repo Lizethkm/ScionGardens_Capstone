@@ -82,7 +82,7 @@ const PlantCollectionPage = (props) => {
 
     }; 
 
-    const handleEditFormSubmit = (event) => {
+    const handleEditFormSubmit = async(event) => {
 
         event.preventDefault();
 
@@ -96,7 +96,7 @@ const PlantCollectionPage = (props) => {
 
 
         
-        let response = axios.put(`http://127.0.0.1:8000/api/plantcollection/${editedPlantCollection.id}/`, editedPlantCollection, {
+        let response = await axios.put(`http://127.0.0.1:8000/api/plantcollection/${editedPlantCollection.id}/`, editedPlantCollection, {
             headers: {
                 Authorization: "Bearer " + token
             }
@@ -104,7 +104,7 @@ const PlantCollectionPage = (props) => {
 
         setEditPlantCollectionId(null);
         setEditFormData(null);
-        fetchPlantCollections();
+        await fetchPlantCollections();
 
      
     }
@@ -113,7 +113,7 @@ const PlantCollectionPage = (props) => {
         setEditPlantCollectionId(null);
     }
 
-    const handleDeleteClick = (plantCollection) => {
+    const handleDeleteClick = async(plantCollection) => {
         
 
         let response = axios.delete(`http://127.0.0.1:8000/api/plantcollection/${plantCollection}/`, {
