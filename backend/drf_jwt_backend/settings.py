@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'cars.apps.CarsConfig',  # This app is for example use only
     'scion_gardens',
-    'locations',
     'reminders',
 ]
 

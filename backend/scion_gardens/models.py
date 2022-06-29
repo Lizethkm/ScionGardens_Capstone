@@ -9,6 +9,7 @@ class PlantCollection(models.Model):
     sunlight = models.CharField(max_length=250)
     water = models.CharField(max_length=250)
     maintenance = models.CharField(max_length=300)
+    location = models.CharField(max_length=250)
     
 
 
