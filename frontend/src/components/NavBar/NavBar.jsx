@@ -25,14 +25,21 @@ const Navbar = () => {
         </li>
 
         <li className="plantCollections">
-          <Link to="/plantcollections" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Plant Collections</h4></Link>
+          <Link to="/plantcollections" style={{textDecoration: "none", color: "#FFAE00 "}}>
+            <h4 className="navBarLabel">Plant Collections</h4></Link>
         </li>
-        <li className="locations">
-          <Link to="/locations" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Locations</h4></Link>
-        </li>
+
         <li className="reminders">
-          <Link to="/reminders" style={{textDecoration: "none", color: "#FFAE00 "}}><h4 className="navBarLabel">Reminders</h4></Link>
+          <Link to="/reminders" style={{textDecoration: "none", color: "#FFAE00 "}}>
+            <h4 className="navBarLabel">Reminders</h4></Link>
         </li>
+
+        <li>
+            <Link to="/aboutus" style={{ textDecoration: "none", color: "#FFAE00 "}}>
+              <h4 className="navBarLabel">About Us</h4>
+            </Link>
+          </li>
+
         <li>
           {user ? (
             <button onClick={logoutUser}>Logout</button>

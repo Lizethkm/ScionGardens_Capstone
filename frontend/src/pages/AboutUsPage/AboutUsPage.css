@@ -1,0 +1,23 @@
+.aboutUsPage{
+    background-color: black;
+    /* background-size: contain;
+    background-position:  no-repeat;  
+    position:fixed; */
+    top: 0;   
+    left: 0;  
+    right: 0;
+    bottom: 0;
+    min-width: 10%;
+    min-height: 10%;
+}
+
+.aboutImage{
+    height: auto;
+    width: 420px;
+
+}
+
+.aboutUs{
+    width: 550px
+    
+}

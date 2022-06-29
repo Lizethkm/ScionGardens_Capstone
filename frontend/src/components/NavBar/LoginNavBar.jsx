@@ -26,6 +26,11 @@ const LoginNavBar = (props) => {
               
             </Link>
           </li>
+          <li>
+            <Link to="/aboutus" style={{ textDecoration: "none", color: "#FFAE00 "}}>
+              <h2 className="navBarLabel">About Us</h2>
+            </Link>
+          </li>
   
           <li>
             {user ? (

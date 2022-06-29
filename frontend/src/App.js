@@ -7,7 +7,9 @@ import HomePage from "./pages/HomePage/HomePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import PlantCollectionPage from "./pages/PlantCollectionPage/PlantCollectionPage";
-import LocationsPage from "./pages/LocationsPage/LocationsPage";
+import ReminderPage from "./pages/RemindersPage/RemindersPage";
+import AboutUsPage from "./pages/AboutUsPage/AboutUsPage";
+
 
 // Component Imports
 import Footer from "./components/Footer/Footer";
@@ -15,7 +17,7 @@ import Footer from "./components/Footer/Footer";
 
 // Util Imports
 import PrivateRoute from "./utils/PrivateRoute";
-import ReminderPage from "./pages/RemindersPage/RemindersPage";
+
 
 
 
@@ -45,15 +47,6 @@ function App() {
         }
         />
 
-
-        <Route path= "/locations" element={
-          <PrivateRoute>
-            <LocationsPage />
-          </PrivateRoute>
-        }
-        />
-
-
         <Route path= "/reminders" element={
           <PrivateRoute>
             <ReminderPage />
@@ -64,6 +57,7 @@ function App() {
 
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/aboutus" element={<AboutUsPage />} />
       </Routes>
       <Footer />
     </div>

@@ -22,7 +22,9 @@ const LoginPage = () => {
   return (
     <div> 
       < LoginNavBar />
+
       <div className="loginPage">
+        
             <div className="container" >
               <form className="form" onSubmit={handleSubmit}>
 

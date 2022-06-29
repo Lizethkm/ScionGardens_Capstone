@@ -7,7 +7,7 @@ import axios from "axios";
 import "./HomePage.css"
 import Navbar from "../../components/NavBar/NavBar";
 import UpcomingReminders from "../../components/UpcomingReminders/UpcomingReminders";
-import SortTable from "../../components/SortTable/SortTable";
+import HomePlantTable from "../../components/HomePlantTable/HomePlantTable";
 
 
 const HomePage = () => {
@@ -17,7 +17,7 @@ const HomePage = () => {
   const [user, token] = useAuth();
   const [reminders, setReminders] = useState([]);
 
-  const [homeLocations, setHomeLocations] = useState([]);
+  const [homePlants, setHomePlants] = useState([]);
   
 
   const fetchReminders = async () => {
@@ -40,21 +40,21 @@ const HomePage = () => {
     fetchReminders();
   }, [token]);
 
-  const fetchHomeLocations = async () => {
+  const fetchHomePlantCollections = async () => {
     try {
-        let locations = await axios.get("http://127.0.0.1:8000/api/locations/", {
+        let plantCollections = await axios.get("http://127.0.0.1:8000/api/plantcollection/", {
             headers: {
                 Authorization: "Bearer " + token,
             },
         });
-        setHomeLocations(locations.data);
+        setHomePlants(plantCollections.data);
     } catch (error) {
-        console.log(error.locations.data);
+        console.log(error.plantCollections.data);
     }
   };
 
   useEffect(() => {
-      fetchHomeLocations();
+      fetchHomePlantCollections();
   }, [token]);
 
 
@@ -100,7 +100,7 @@ const HomePage = () => {
 
       </div> 
 
-      < SortTable homeLocations = {homeLocations} setHomeLocations = {setHomeLocations} reminders = {reminders}/>
+      < HomePlantTable homePlants = {homePlants} setHomePlants = {setHomePlants} reminders = {reminders}/>
       
       {/* < UpcomingReminders reminders = {reminders} />      */}
     </div>
