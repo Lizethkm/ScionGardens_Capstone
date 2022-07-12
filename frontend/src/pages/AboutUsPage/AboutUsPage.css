@@ -9,15 +9,32 @@
     bottom: 0;
     min-width: 10%;
     min-height: 10%;
+
+
+
 }
 
-.aboutImage{
-    height: auto;
-    width: 420px;
+.aboutImage img {
+    /* height: auto;
+    width: 420px; */
+    padding-left: 200px;
 
 }
 
 .aboutUs{
-    width: 550px
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     
+}
+
+.aboutUsInfo {
+    width: 550px;
+    margin-right: 96px;
+    color: white;
+}
+
+h4{
+    color: #FFAE00;
 }
